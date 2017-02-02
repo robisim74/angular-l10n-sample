@@ -1,0 +1,36 @@
+<br>
+<div *ngIf="!intlAPI" style="color: #D32F2F;" translate>Home.IntlAPI</div>
+<br>
+
+<div class="app-card-container">
+
+    <md-card>
+        <md-card-title translate>Home.Messages</md-card-title>
+        <md-card-content>
+            <p translate>Home.Dummy text</p>
+            <p translate>Home.Author<span>&nbsp;</span><em translate>Home.Source title</em></p>
+        </md-card-content>
+    </md-card>
+
+    <md-card>
+        <md-card-title translate>Home.Dates</md-card-title>
+        <md-card-content>
+            <p localeDate="fullDate">{{ today }}</p>
+        </md-card-content>
+    </md-card>
+
+    <md-card>
+        <md-card-title translate>Home.Numbers</md-card-title>
+        <md-card-content>
+            <h3 translate>Home.Decimals</h3>
+            <p translate>Home.Pi<span>&nbsp;</span><span localeDecimal="1.5-5">{{ pi }}</span></p>
+            <br>
+            <h3 translate>Home.Percentages</h3>
+            <p localePercent="1.0-0">{{ a }} </p>
+            <br>
+            <h3 translate>Home.Currencies</h3>
+            <p localeCurrency="1.2-2" [symbol]="true">{{ b }}</p>
+        </md-card-content>
+    </md-card>
+
+</div>

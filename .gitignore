@@ -1,0 +1,10 @@
+$ cat .gitignore
+/node_modules
+/aot
+
+/app/**/*.js
+/app/**/*.map
+/app/*.js
+/app/*.map
+
+*.log

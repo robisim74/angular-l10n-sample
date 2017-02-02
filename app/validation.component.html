@@ -1,0 +1,31 @@
+<div class="app-card-container">
+
+    <md-card>
+        <md-card-title>{{ 'Validation.Numbers' | translate:lang }}</md-card-title>
+        <md-card-content>
+            <form [formGroup]="numberForm" (ngSubmit)="onSubmit(numberForm.value)">
+                <div>
+                    <md-input-container style="width: 100%">
+                        <input md-input placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}" [formControl]="decimal" (keyup)="decimal.valid ? parsedValue : parsedValue = null">
+                    </md-input-container>
+
+                    <div *ngIf="decimal.hasError('format') && decimal.value != ''" style="color: #D32F2F;">
+                        {{ 'Validation.Number is invalid' | translate:lang }} {{ 0 | localeDecimal:defaultLocale:digits }}
+                    </div>
+                    <div *ngIf="decimal.hasError('minValue') && decimal.value != ''" style="color: #D32F2F;">
+                        {{ 'Validation.Min value error' | translate:lang }} {{ minValue | localeDecimal:defaultLocale:digits }}
+                    </div>
+                    <div *ngIf="decimal.hasError('maxValue') && decimal.value != ''" style="color: #D32F2F;">
+                        {{ 'Validation.Max value error' | translate:lang }} {{ maxValue | localeDecimal:defaultLocale:digits }}
+                    </div>
+                </div>
+                <br>
+                <button type="submit" [disabled]="!decimal.valid" md-raised-button color="primary">{{ 'Validation.Submit' | translate:lang }}</button>
+                <br>
+                <br>
+                <p>{{ 'Validation.Number value' | translate:lang }} {{ parsedValue }}</p>
+            </form>
+        </md-card-content>
+    </md-card>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="app-main-container">
+
+    <div class="app-card-container">
+
+        <md-card *ngFor="let item of DATA | async">
+            <md-card-title>{{ item.name }}</md-card-title>
+            <md-card-content>
+                <md-list>
+                    <md-list-item>
+                        <h3 md-line>{{ item.position | translate:lang }}</h3>
+                        <p md-line>{{ item.salary | localeCurrency:defaultLocale:currency:true:'1.0-0' }}</p>
+                        <p md-line>{{ item.startDate | localeDate:defaultLocale:'mediumDate' }}</p>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+        </md-card>
+
+    </div>
+
+    <div class="app-aside-container" *ngIf="intlAPI">
+
+        <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'asc')" [disabled]="order == 'asc'">{{ 'Order by position' | translate:lang }}</button><br>
+        <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'desc')" [disabled]="order == 'desc'">{{ 'Order by desc position' | translate:lang }}</button><br>
+
+        <md-input-container>
+            <input md-input [(ngModel)]="s" (keyup)="filterData(keyName, order)" placeholder="{{ 'Search by position' | translate:lang}}">
+        </md-input-container>
+
+    </div>
+
+</div>

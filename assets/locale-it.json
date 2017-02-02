@@ -1,0 +1,48 @@
+{
+    "App": {
+        "Title": "Localizzazione in Angular",
+        "Subtitle": "Il mondo è piccolo",
+        "Change country": "Cambia Paese",
+        "Resources": "Risorse",
+        "Menu": "Navigazione",
+        "HOME": "Home",
+        "I18n": "i18n",
+        "List": "Lista",
+        "Validation": "Convalida",
+        "Source code": "Codice sorgente"
+    },
+    "Home": {
+        "Dummy text": "Gregorio Samsa, svegliandosi una mattina da sogni agitati, si trovò trasformato, nel suo letto, in un enorme insetto immondo. Riposava sulla schiena, dura come una corazza, e sollevando un poco il capo vedeva il suo ventre arcuato, bruno e diviso in tanti segmenti ricurvi, in cima a cui la coperta da letto, vicina a scivolar giù tutta, si manteneva a fatica. Le gambe, numerose e sottili da far pietà, rispetto alla sua corporatura normale, tremolavano senza tregua in un confuso luccichio dinanzi ai suoi occhi. Cosa m'è avvenuto? pensò. Non era un sogno.",
+        "Author": "Kafka",
+        "Source title": "La metamorfosi",
+        "Messages": "Testi",
+        "Dates": "Date",
+        "Numbers": "Numeri",
+        "Decimals": "Decimali",
+        "Pi": "Pi greco:",
+        "Percentages": "Percentuali",
+        "Currencies": "Valute",
+        "IntlAPI": "Il browser non supporta tutte le funzionalità di questa app."
+    },
+    "I18n": {
+        "Gender": "Genere",
+        "Plural": "Numero",
+        "female": "femmina",
+        "male": "maschio",
+        "Invite her": "Invitala",
+        "Invite him": "Invitalo",
+        "Add message": "Aggiungi un nuovo messaggio",
+        "Add": "Aggiungi",
+        "No messages": "Nessun messaggio",
+        "One message": "Un messaggio",
+        "messages": "messaggi"
+    },
+    "Validation": {
+        "Numbers": "Numeri",
+        "Number is invalid": "Il numero non è valido. Il formato richiesto è:",
+        "Min value error": "Il valore minimo è:",
+        "Max value error": "Il valore massimo è:",
+        "Number value": "Valore del numero:",
+        "Submit": "Invia"
+    }
+}
