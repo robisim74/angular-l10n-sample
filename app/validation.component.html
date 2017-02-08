@@ -9,13 +9,13 @@
                         <input md-input placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}" [formControl]="decimal" (keyup)="decimal.valid ? parsedValue : parsedValue = null">
                     </md-input-container>
 
-                    <div *ngIf="decimal.hasError('format') && decimal.value != ''" style="color: #D32F2F;">
+                    <div *ngIf="decimal.hasError('format')" style="color: #D32F2F;">
                         {{ 'Validation.Number is invalid' | translate:lang }} {{ 0 | localeDecimal:defaultLocale:digits }}
                     </div>
-                    <div *ngIf="decimal.hasError('minValue') && decimal.value != ''" style="color: #D32F2F;">
+                    <div *ngIf="decimal.hasError('minValue')" style="color: #D32F2F;">
                         {{ 'Validation.Min value error' | translate:lang }} {{ minValue | localeDecimal:defaultLocale:digits }}
                     </div>
-                    <div *ngIf="decimal.hasError('maxValue') && decimal.value != ''" style="color: #D32F2F;">
+                    <div *ngIf="decimal.hasError('maxValue')" style="color: #D32F2F;">
                         {{ 'Validation.Max value error' | translate:lang }} {{ maxValue | localeDecimal:defaultLocale:digits }}
                     </div>
                 </div>
