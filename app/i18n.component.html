@@ -16,7 +16,7 @@
         <md-card-content>
             <form (ngSubmit)="addMessage(i18nForm.value)" #i18nForm="ngForm">
                 <md-input-container style="width: 100%">
-                    <input md-input [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required>
+                    <input mdInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required>
                 </md-input-container>
                 <button type="submit" md-raised-button color="primary">{{ 'I18n.Add' | translate:lang }}</button>
                 <br>

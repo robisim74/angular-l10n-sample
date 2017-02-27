@@ -7,7 +7,7 @@ let isProd = process.env.NODE_ENV === 'production';
 
 if (!isProd) {
 
-    // In development mode, we use JiT compilation, with files watching.
+    // In development mode, we use JiT compilation.
     module.exports = {
         entry: {
             'app': './app/main.ts'
@@ -68,8 +68,6 @@ if (!isProd) {
         },
 
         devtool: 'source-map',
-
-        watch: true,
 
         performance: { hints: false }
 

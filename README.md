@@ -7,12 +7,11 @@ Make sure that you have the latest version of _npm_:
 npm install npm@latest -g
 ```
 
-- For development, we use _JiT compilation_ with files watching:
+- For development, we use _JiT compilation_ with Hot Module Replacement:
 ```Shell
 npm install
 npm start
 ```
-Make the changes, and simply refresh the page on the browser.
 
 - For production, we use _AoT compilation_, tree shaking & minification:
 ```Shell

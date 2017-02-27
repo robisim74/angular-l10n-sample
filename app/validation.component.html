@@ -6,7 +6,7 @@
             <form [formGroup]="numberForm" (ngSubmit)="onSubmit(numberForm.value)">
                 <div>
                     <md-input-container style="width: 100%">
-                        <input md-input placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}" [formControl]="decimal" (keyup)="decimal.valid ? parsedValue : parsedValue = null">
+                        <input mdInput placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}" [formControl]="decimal" (keyup)="decimal.valid ? parsedValue : parsedValue = null">
                     </md-input-container>
 
                     <div *ngIf="decimal.hasError('format')" style="color: #D32F2F;">

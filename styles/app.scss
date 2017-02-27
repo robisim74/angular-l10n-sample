@@ -9,13 +9,6 @@ body {
 md-sidenav {
 	width: 250px;
 	padding: 10px;
-
-		[md-button] {
-			width: 100%;
-			position: relative;
-			bottom: 0;
-			margin: 24px 0;
-		}
 }
 
 .app-content {
@@ -52,7 +45,7 @@ md-nav-list {
 }
 
 .active-link {
-	.md-list-item {
+	.mat-list-item-content {
 		color: #1976D2;
 	}
 }

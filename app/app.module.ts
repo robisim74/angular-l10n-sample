@@ -54,7 +54,7 @@ export function initLocalization(localizationConfig: LocalizationConfig): Functi
         BrowserModule,
         routing,
         SharedModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         LocalizationModule.forRoot(), // New instance of LocaleService & TranslationService.
         LocaleValidationModule.forRoot()
     ],
