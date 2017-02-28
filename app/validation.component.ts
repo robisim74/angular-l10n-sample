@@ -31,6 +31,13 @@ export class ValidationComponent extends Localization {
     ) {
         super(locale, translation);
 
+        this.locale.defaultLocaleChanged.subscribe(
+            () => {
+                this.numberForm.controls['decimal'].setValue(null);
+                this.parsedValue = null;
+            }
+        );
+
         this.numberForm = fb.group({
             decimal: ['', validateLocaleNumber(this.locale, this.digits, this.minValue, this.maxValue)]
         });
