@@ -15,7 +15,7 @@ if (!isProd) {
 
         output: {
             path: __dirname,
-            filename: "dist/[name].bundle.js",
+            filename: 'dist/[name].bundle.js',
             chunkFilename: 'dist/[id].chunk.js',
             publicPath: '/'
         },
@@ -84,7 +84,7 @@ if (!isProd) {
 
         output: {
             path: __dirname,
-            filename: "dist/[name].bundle.js",
+            filename: 'dist/[name].bundle.js',
             chunkFilename: 'dist/[id].chunk.js'
         },
 
