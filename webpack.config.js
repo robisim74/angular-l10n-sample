@@ -7,7 +7,7 @@ let isProd = process.env.NODE_ENV === 'production';
 
 if (!isProd) {
 
-    // In development mode, we use JiT compilation.
+    // In development mode, we use JiT compilation with Hot Module Replacement.
     module.exports = {
         entry: {
             'app': './app/main.ts'
@@ -16,7 +16,8 @@ if (!isProd) {
         output: {
             path: __dirname,
             filename: "dist/[name].bundle.js",
-            chunkFilename: 'dist/[id].chunk.js'
+            chunkFilename: 'dist/[id].chunk.js',
+            publicPath: '/'
         },
 
         module: {
