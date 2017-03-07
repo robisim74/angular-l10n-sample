@@ -12,6 +12,7 @@ npm install npm@latest -g
 npm install
 npm start
 ```
+Make the changes: the browser will update without refreshing.
 
 - For production, we use _AoT compilation_, tree shaking & minification:
 ```Shell
