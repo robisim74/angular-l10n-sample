@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgLocalization } from '@angular/common';
 
-import { Localization, LocaleService, TranslationService } from 'angular-l10n';
+import { Translation, TranslationService } from 'angular-l10n';
 
 export class MessagesLocalization extends NgLocalization {
     getPluralCategory(value: any): string {
@@ -15,7 +15,7 @@ export class MessagesLocalization extends NgLocalization {
     templateUrl: 'i18n.component.html',
     providers: [{ provide: NgLocalization, useClass: MessagesLocalization }]
 })
-export class I18nComponent extends Localization {
+export class I18nComponent extends Translation {
 
     message: string = "";
 
@@ -32,8 +32,8 @@ export class I18nComponent extends Localization {
         'other': '# I18n.messages'
     };
 
-    constructor(public locale: LocaleService, public translation: TranslationService) {
-        super(locale, translation);
+    constructor(public translation: TranslationService) {
+        super(translation);
     }
 
     addMessage(value: any): void {

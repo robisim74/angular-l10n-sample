@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 
 import { routing } from './list.routes';
 import { SharedModule } from './shared/shared.module';
@@ -11,7 +10,6 @@ import { LocalizationModule } from 'angular-l10n';
     imports: [
         routing,
         SharedModule,
-        MaterialModule,
         LocalizationModule.forChild() // New instance of TranslationService.
     ],
     declarations: [ListComponent]

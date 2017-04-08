@@ -27,7 +27,7 @@
             true,
             "Directive"
         ],
-        "templates-use-public": true,
+        "templates-use-public": false,
         "no-access-missing-member": false,
         "invoke-injectable": true,
         "forin": false,

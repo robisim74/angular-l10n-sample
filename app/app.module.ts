@@ -1,6 +1,6 @@
 import { NgModule, APP_INITIALIZER, Injectable } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing } from './app.routes';
 import { SharedModule } from './shared/shared.module';
@@ -18,17 +18,17 @@ export class LocalizationConfig {
     constructor(public locale: LocaleService, public translation: TranslationService) { }
 
     load(): Promise<any> {
-        this.locale.AddConfiguration()
-            .AddLanguage('en', 'ltr')
-            .AddLanguage('it', 'ltr')
-            .AddLanguage('ar', 'rtl')
-            .SetCookieExpiration(30)
-            .DefineDefaultLocale('en', 'US')
-            .DefineCurrency('USD');
+        this.locale.addConfiguration()
+            .addLanguage('en', 'ltr')
+            .addLanguage('it', 'ltr')
+            .addLanguage('ar', 'rtl')
+            .setCookieExpiration(30)
+            .defineDefaultLocale('en', 'US')
+            .defineCurrency('USD');
         this.locale.init();
 
-        this.translation.AddConfiguration()
-            .AddProvider('./assets/locale-');
+        this.translation.addConfiguration()
+            .addProvider('./assets/locale-');
 
         let promise: Promise<any> = new Promise((resolve: any) => {
             this.translation.translationChanged.subscribe(() => {
@@ -52,9 +52,9 @@ export function initLocalization(localizationConfig: LocalizationConfig): Functi
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         routing,
         SharedModule,
-        MaterialModule,
         LocalizationModule.forRoot(), // New instance of LocaleService & TranslationService.
         LocaleValidationModule.forRoot()
     ],

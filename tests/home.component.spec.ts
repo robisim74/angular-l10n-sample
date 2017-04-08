@@ -2,9 +2,11 @@ import { HomeComponent } from '../app/home.component';
 
 import { HttpModule } from '@angular/http';
 import { TestBed, async, inject } from '@angular/core/testing';
-import { MaterialModule } from '@angular/material';
+import { MdCardModule } from '@angular/material';
 
 import { LocalizationModule, LocaleService, TranslationService } from 'angular-l10n';
+
+import '../styles/blue-amber.scss';
 
 describe('Component: HomeComponent', () => {
 
@@ -12,7 +14,7 @@ describe('Component: HomeComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpModule,
-                MaterialModule.forRoot(),
+                MdCardModule,
                 LocalizationModule.forRoot()
             ],
             declarations: [HomeComponent]
@@ -26,16 +28,16 @@ describe('Component: HomeComponent', () => {
                 const f = TestBed.createComponent(HomeComponent);
                 f.detectChanges();
 
-                locale.AddConfiguration()
-                    .DisableStorage()
-                    .AddLanguages(['en', 'it', 'ar'])
-                    .DefineDefaultLocale('en', 'US')
-                    .DefineCurrency('USD');
+                locale.addConfiguration()
+                    .disableStorage()
+                    .addLanguages(['en', 'it', 'ar'])
+                    .defineDefaultLocale('en', 'US')
+                    .defineCurrency('USD');
                 locale.init();
 
                 // Karma serves files from 'base' relative path.
-                translation.AddConfiguration()
-                    .AddProvider('base/assets/locale-');
+                translation.addConfiguration()
+                    .addProvider('base/assets/locale-');
 
                 translation.translationChanged.subscribe(
                     () => {

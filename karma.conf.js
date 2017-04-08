@@ -49,6 +49,14 @@ module.exports = function (config) {
                     {
                         test: /\.html$/,
                         loader: 'raw-loader'
+                    },
+                    {
+                        test: /\.scss$/,
+                        loaders: [
+                            'style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ]
                     }
                 ],
                 exprContextCritical: false

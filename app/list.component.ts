@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { ISubscription } from 'rxjs/Subscription';
 
 import {
     Localization,
@@ -13,7 +14,7 @@ import {
     templateUrl: 'list.component.html',
     viewProviders: [Collator]
 })
-export class ListComponent extends Localization {
+export class ListComponent extends Localization implements OnDestroy {
 
     intlAPI: boolean;
 
@@ -24,22 +25,36 @@ export class ListComponent extends Localization {
     order: string;
     s: string;
 
+    subscriptions: ISubscription[] = [];
+
     constructor(public locale: LocaleService, public translation: TranslationService, private collator: Collator) {
         super(locale, translation);
 
         this.intlAPI = IntlAPI.HasCollator();
 
-        this.translation.AddConfiguration()
-            .AddProvider('./assets/locale-list-')
-            .AddProvider('./assets/locale-position-');
+        this.translation.addConfiguration()
+            .addProvider('./assets/locale-list-')
+            .addProvider('./assets/locale-position-');
         this.translation.init();
 
         this.initializeFilters();
 
         // Reinitializes filters when language changes.
-        this.translation.translationChanged.subscribe(
+        this.subscriptions.push(this.translation.translationChanged.subscribe(
             () => { this.initializeFilters(); }
-        );
+        ));
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach((subscription: ISubscription) => {
+            if (typeof subscription !== "undefined") {
+                subscription.unsubscribe();
+            }
+        });
+
+        // The ngOnDestroy method overrides the method inherited by Localization class,
+        // so we call the method to cancel the subscriptions that update the pipes parameters.
+        this.cancelPipesSubscriptions();
     }
 
     initializeFilters(): void {
