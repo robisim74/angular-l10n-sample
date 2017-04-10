@@ -1,7 +1,7 @@
 import { HomeComponent } from '../app/home.component';
 
+import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
-import { TestBed, async, inject } from '@angular/core/testing';
 import { MdCardModule } from '@angular/material';
 
 import { LocalizationModule, LocaleService, TranslationService } from 'angular-l10n';
@@ -10,7 +10,13 @@ import '../styles/blue-amber.scss';
 
 describe('Component: HomeComponent', () => {
 
-    beforeEach(() => {
+    let fixture: ComponentFixture<HomeComponent>;
+    let comp: HomeComponent;
+
+    let locale: LocaleService;
+    let translation: TranslationService;
+
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpModule,
@@ -18,35 +24,37 @@ describe('Component: HomeComponent', () => {
                 LocalizationModule.forRoot()
             ],
             declarations: [HomeComponent]
-        });
-        TestBed.compileComponents();
+        }).compileComponents();
     });
 
-    it('should render translated text', async(
-        inject([LocaleService, TranslationService],
-            (locale: LocaleService, translation: TranslationService) => {
-                const f = TestBed.createComponent(HomeComponent);
-                f.detectChanges();
+    beforeEach(() => {
+        fixture = TestBed.createComponent(HomeComponent);
+        comp = fixture.componentInstance;
 
-                locale.addConfiguration()
-                    .disableStorage()
-                    .addLanguages(['en', 'it', 'ar'])
-                    .defineDefaultLocale('en', 'US')
-                    .defineCurrency('USD');
-                locale.init();
+        locale = TestBed.get(LocaleService);
+        translation = TestBed.get(TranslationService);
 
-                // Karma serves files from 'base' relative path.
-                translation.addConfiguration()
-                    .addProvider('base/assets/locale-');
+        locale.addConfiguration()
+            .disableStorage()
+            .addLanguages(['en'])
+            .defineDefaultLocale('en', 'US')
+            .defineCurrency('USD');
+        locale.init();
 
-                translation.translationChanged.subscribe(
-                    () => {
-                        expect(f.debugElement.nativeElement).toContainText('The Metamorphosis');
-                    }
-                );
+        // Karma serves files from 'base' relative path.
+        translation.addConfiguration()
+            .addProvider('base/assets/locale-');
+        translation.init();
+    });
 
-                translation.init();
-            })
-    ));
+    it('should render translated text', async(() => {
+        fixture.detectChanges();
+
+        translation.translationChanged.subscribe(
+            () => {
+                expect(fixture.debugElement.nativeElement).toContainText('The Metamorphosis');
+            }
+        );
+    }));
 
 })

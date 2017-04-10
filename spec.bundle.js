@@ -2,7 +2,6 @@ Error.stackTraceLimit = Infinity;
 
 require('core-js');
 require('jasmine-jquery');
-require('ts-helpers');
 require('zone.js/dist/zone');
 require('zone.js/dist/long-stack-trace-zone');
 require('zone.js/dist/proxy');
