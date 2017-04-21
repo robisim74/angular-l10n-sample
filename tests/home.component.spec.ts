@@ -1,6 +1,6 @@
 import { HomeComponent } from '../app/home.component';
 
-import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import { MdCardModule } from '@angular/material';
 

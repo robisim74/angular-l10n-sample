@@ -35,7 +35,8 @@ module.exports = function (config) {
                         test: /\.ts$/,
                         loaders: [
                             'awesome-typescript-loader',
-                            'angular2-template-loader'
+                            'angular2-template-loader',
+                            'source-map-loader'
                         ]
                     },
                     {
@@ -56,6 +57,7 @@ module.exports = function (config) {
             resolve: {
                 extensions: ['.ts', '.js', '.html']
             },
+            devtool: 'inline-source-map',
             performance: { hints: false }
         },
 
