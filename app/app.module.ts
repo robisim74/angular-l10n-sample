@@ -30,7 +30,7 @@ export class LocalizationConfig {
         this.translation.addConfiguration()
             .addProvider('./assets/locale-');
 
-        let promise: Promise<any> = new Promise((resolve: any) => {
+        const promise: Promise<any> = new Promise((resolve: any) => {
             this.translation.translationChanged.subscribe(() => {
                 resolve(true);
             });

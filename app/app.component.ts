@@ -46,7 +46,7 @@ export class AppComponent implements OnDestroy {
     }
 
     getLanguageDirection(language?: string): LayoutDirection {
-        return <LayoutDirection>this.locale.getLanguageDirection(language);
+        return this.locale.getLanguageDirection(language) as LayoutDirection;
     }
 
     selectLocale(language: string, country: string, currency: string): void {

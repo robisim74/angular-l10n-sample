@@ -98,7 +98,7 @@ export class ListComponent extends Localization implements OnDestroy {
 
     loadData(): Data[] {
         // Mock data.
-        let DATA: Data[] = [];
+        const DATA: Data[] = [];
 
         let data: Data = new Data();
 
