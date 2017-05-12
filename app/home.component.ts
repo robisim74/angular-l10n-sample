@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 
 import { IntlAPI } from 'angular-l10n';
 
@@ -6,10 +6,10 @@ import { IntlAPI } from 'angular-l10n';
     templateUrl: 'home.component.html'
 })
 /**
- * HomeComponent class doesn't extend Localization superclass
+ * HomeComponent class doesn't use decorators
  * because the view uses only directives and not the pipes to get the translation.
  */
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
     intlAPI: boolean;
 
@@ -18,14 +18,14 @@ export class HomeComponent {
     a: number;
     b: number;
 
-    constructor() {
+    ngOnInit(): void {
         this.today = Date.now();
         this.pi = 3.14159;
         this.a = Math.round(Math.random() * 100) / 100;
         this.b = Math.round(Math.random() * 1000000) / 100;
-        this.intlAPI = IntlAPI.HasDateTimeFormat()
-            && IntlAPI.HasNumberFormat()
-            && IntlAPI.HasCollator();
+        this.intlAPI = IntlAPI.hasDateTimeFormat()
+            && IntlAPI.hasNumberFormat()
+            && IntlAPI.hasCollator();
     }
 
 }

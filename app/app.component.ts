@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ISubscription } from 'rxjs/Subscription';
 
@@ -11,10 +11,10 @@ import { LayoutDirection } from '@angular/material';
     templateUrl: 'app.component.html'
 })
 /**
- * AppComponent class doesn't extend Localization superclass
+ * AppComponent class doesn't use decorators
  * because the view uses only directives and not the pipes to get the translation.
  */
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
     get currentCountry(): string {
         return this.locale.getCurrentCountry();
@@ -22,27 +22,25 @@ export class AppComponent implements OnDestroy {
 
     dir: LayoutDirection;
 
-    subscriptions: ISubscription[] = [];
+    subscription: ISubscription;
 
-    constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) {
+    constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) { }
+
+    ngOnInit(): void {
         // Initializes the document title with the current translation at the time of the component loading.
         this.title.setTitle(this.translation.translate('App.Title'));
 
         // When the language changes, refreshes the document title with the new translation.
-        this.subscriptions.push(this.translation.translationChanged.subscribe(
+        this.subscription = this.translation.translationChanged.subscribe(
             () => { this.title.setTitle(this.translation.translate('App.Title')); }
-        ));
+        );
 
         // Initializes direction.
         this.dir = this.getLanguageDirection();
     }
 
     ngOnDestroy(): void {
-        this.subscriptions.forEach((subscription: ISubscription) => {
-            if (typeof subscription !== "undefined") {
-                subscription.unsubscribe();
-            }
-        });
+        this.subscription.unsubscribe();
     }
 
     getLanguageDirection(language?: string): LayoutDirection {

@@ -1,19 +1,22 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { ISubscription } from 'rxjs/Subscription';
 
 import {
-    Localization,
     LocaleService,
-    TranslationService,
     LocaleValidation,
-    validateLocaleNumber
+    validateLocaleNumber,
+    Language,
+    DefaultLocale
 } from 'angular-l10n';
 
 @Component({
     templateUrl: 'validation.component.html'
 })
-export class ValidationComponent extends Localization implements OnDestroy {
+export class ValidationComponent implements OnInit, OnDestroy {
+
+    @Language() lang: string;
+    @DefaultLocale() defaultLocale: string;
 
     digits: string = "1.2-2";
     minValue: number = -Math.round(Math.random() * 10000) / 100;
@@ -24,25 +27,24 @@ export class ValidationComponent extends Localization implements OnDestroy {
     numberForm: FormGroup;
     decimal: AbstractControl;
 
-    subscriptions: ISubscription[] = [];
+    subscription: ISubscription;
 
     constructor(
         public locale: LocaleService,
-        public translation: TranslationService,
         private localeValidation: LocaleValidation,
         private fb: FormBuilder
-    ) {
-        super(locale, translation);
+    ) { }
 
-        this.subscriptions.push(this.locale.defaultLocaleChanged.subscribe(
+    ngOnInit(): void {
+        this.subscription = this.locale.defaultLocaleChanged.subscribe(
             () => {
                 this.numberForm.controls['decimal'].setValue(null);
                 this.parsedValue = null;
             }
-        ));
+        );
 
-        this.numberForm = fb.group({
-            decimal: ['', validateLocaleNumber(this.locale, this.digits, this.minValue, this.maxValue)]
+        this.numberForm = this.fb.group({
+            decimal: ['', validateLocaleNumber(this.digits, this.minValue, this.maxValue)]
         });
 
         // 'decimal' control.
@@ -50,15 +52,7 @@ export class ValidationComponent extends Localization implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.subscriptions.forEach((subscription: ISubscription) => {
-            if (typeof subscription !== "undefined") {
-                subscription.unsubscribe();
-            }
-        });
-
-        // The ngOnDestroy method overrides the method inherited by Localization class,
-        // so we call the method to cancel the subscriptions that update the pipes parameters.
-        this.cancelPipesSubscriptions();
+        this.subscription.unsubscribe();
     }
 
     onSubmit(value: any): void {
