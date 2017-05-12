@@ -12,14 +12,17 @@ rm('-Rf', 'dist/*');
 // https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
 // https://github.com/mgechev/codelyzer
 echo('Start TSLint');
-exec('tslint --project ./tsconfig.json --type-check ./app/**/*.ts -e ./app/main-aot.ts');
+exec('tslint --project ./tsconfig.json --type-check ./src/**/*.ts -e ./src/main-aot.ts');
 echo(chalk.green('TSLint completed'));
 
 /* Aot compilation */
-echo('Start AoT compilation');
+echo(`Start AoT compilation`);
 echo('ngc -p tsconfig-aot.json');
-exec('ngc -p tsconfig-aot.json');
-echo(chalk.green('AoT compilation completed'));
+if (exec(`ngc -p tsconfig-aot.json`).code !== 0) {
+    echo(chalk.red(`Error: AoT compilation failed`));
+    exit(1);
+}
+echo(chalk.green(`AoT compilation completed`));
 
 /* Tree shaking & minification with webpack */
 echo('Start Tree shaking & minification');

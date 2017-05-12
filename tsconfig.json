@@ -9,6 +9,7 @@
         "removeComments": true,
         "noImplicitAny": true,
         "skipLibCheck": true,
+        "strict": true,
         "lib": [
             "es2015",
             "dom"
@@ -22,7 +23,7 @@
     "exclude": [
         "node_modules",
         "aot",
-        "app/main-aot.ts"
+        "src/main-aot.ts"
     ],
     "awesomeTypescriptLoaderOptions": {
         "useWebpackText": true

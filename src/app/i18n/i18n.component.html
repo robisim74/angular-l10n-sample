@@ -1,0 +1,29 @@
+<div class="app-card-container">
+
+    <md-card>
+        <md-card-title>{{ 'I18n.Gender' | translate:lang }}</md-card-title>
+        <md-card-content>
+            <md-radio-button name="gender" ref-female value="female" (click)="gender = female.value">{{ 'I18n.female' | translate:lang }}</md-radio-button>
+            <md-radio-button name="gender" ref-male value="male" (click)="gender = male.value">{{ 'I18n.male' | translate:lang }}</md-radio-button>
+            <br>
+            <br>
+            <p *ngIf="gender != ''">{{ gender | i18nSelect:inviteMapping | translate:lang }}</p>
+        </md-card-content>
+    </md-card>
+
+    <md-card>
+        <md-card-title>{{ 'I18n.Plural' | translate:lang }}</md-card-title>
+        <md-card-content>
+            <form (ngSubmit)="addMessage(i18nForm.value)" #i18nForm="ngForm">
+                <md-input-container style="width: 100%">
+                    <input mdInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required>
+                </md-input-container>
+                <button type="submit" md-raised-button color="primary" [disabled]="!i18nForm.form.valid">{{ 'I18n.Add' | translate:lang }}</button>
+                <br>
+                <br>
+                <p>{{ messages.length | i18nPlural:messageMapping | translate:lang }}</p>
+            </form>
+        </md-card-content>
+    </md-card>
+
+</div>

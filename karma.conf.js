@@ -14,7 +14,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             { pattern: 'spec.bundle.js', watched: false },
-            { pattern: 'assets/*.json', watched: true, served: true, included: false }
+            { pattern: 'src/assets/*.json', watched: true, served: true, included: false }
         ],
 
         // list of files to exclude

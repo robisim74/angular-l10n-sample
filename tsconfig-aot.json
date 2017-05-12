@@ -10,15 +10,16 @@
         "noImplicitAny": true,
         "suppressImplicitAnyIndexErrors": true,
         "skipLibCheck": true,
+        "strict": true,
         "lib": [
             "es2015",
             "dom"
         ]
     },
     "files": [
-        "app/app.module.ts",
-        "app/list.module.ts",
-        "app/main-aot.ts"
+        "src/app/app.module.ts",
+        "src/app/list/list.module.ts",
+        "src/main-aot.ts"
     ],
     "angularCompilerOptions": {
         "genDir": "aot",

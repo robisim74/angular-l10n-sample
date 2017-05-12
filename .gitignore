@@ -2,9 +2,9 @@ $ cat .gitignore
 /node_modules
 /aot
 
-/app/**/*.js
-/app/**/*.map
-/app/*.js
-/app/*.map
+/src/**/*.js
+/src/**/*.map
+/src/*.js
+/src/*.map
 
 *.log

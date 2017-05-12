@@ -1,16 +1,16 @@
 'use strict';
-let path = require('path');
-let webpack = require('webpack');
-let HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 if (!isProd) {
 
     // In development mode, we use JiT compilation with Hot Module Replacement.
     module.exports = {
         entry: {
-            'app': './app/main.ts'
+            'app': './src/main.ts'
         },
 
         output: {
@@ -60,7 +60,7 @@ if (!isProd) {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 inject: 'body',
-                template: 'app/index.html'
+                template: 'src/index.html'
             })
         ],
 
@@ -79,7 +79,7 @@ if (!isProd) {
     // In production mode, we use AoT compilation, tree shaking & minification.
     module.exports = {
         entry: {
-            'app-aot': './app/main-aot.js'
+            'app-aot': './src/main-aot.ts'
         },
 
         output: {
@@ -137,14 +137,14 @@ if (!isProd) {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 inject: 'body',
-                template: 'app/index.html'
+                template: 'src/index.html'
             })
         ],
 
         resolve: {
             modules: [
                 'node_modules',
-                path.resolve(__dirname, 'app')
+                path.resolve(__dirname, 'src')
             ],
             extensions: ['.ts', '.js', '.html', '.css', '.scss']
         },
