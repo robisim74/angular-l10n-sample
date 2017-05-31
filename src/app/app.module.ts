@@ -13,12 +13,11 @@ import { ValidationComponent } from './validation/validation.component';
 import { LocalizationModule, LocaleValidationModule, LocaleService, TranslationService } from 'angular-l10n';
 
 // Advanced initialization.
-@Injectable()
-export class LocalizationConfig {
+@Injectable() export class LocalizationConfig {
 
     constructor(public locale: LocaleService, public translation: TranslationService) { }
 
-    load(): Promise<any> {
+    load(): Promise<void> {
         this.locale.addConfiguration()
             .addLanguage('en', 'ltr')
             .addLanguage('it', 'ltr')
@@ -26,20 +25,11 @@ export class LocalizationConfig {
             .setCookieExpiration(30)
             .defineDefaultLocale('en', 'US')
             .defineCurrency('USD');
-        this.locale.init();
 
         this.translation.addConfiguration()
             .addProvider('./src/assets/locale-');
 
-        const promise: Promise<any> = new Promise((resolve: any) => {
-            this.translation.translationChanged.subscribe(() => {
-                resolve(true);
-            });
-        });
-
-        this.translation.init();
-
-        return promise;
+        return this.translation.init();
     }
 
 }

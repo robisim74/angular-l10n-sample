@@ -19,18 +19,18 @@ describe('Component: HomeComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                HttpModule,
                 MdCardModule,
+                HttpModule,
                 LocalizationModule.forRoot()
             ],
             declarations: [HomeComponent]
         }).compileComponents();
-    });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(HomeComponent);
         comp = fixture.componentInstance;
+    });
 
+    beforeEach((done: any) => {
         locale = TestBed.get(LocaleService);
         translation = TestBed.get(TranslationService);
 
@@ -39,22 +39,18 @@ describe('Component: HomeComponent', () => {
             .addLanguages(['en'])
             .defineDefaultLocale('en', 'US')
             .defineCurrency('USD');
-        locale.init();
 
         // Karma serves files from 'base' relative path.
         translation.addConfiguration()
             .addProvider('base/src/assets/locale-');
-        translation.init();
+
+        translation.init().then(() => done());
     });
 
-    it('should render translated text', async(() => {
+    it('should render translated text', (() => {
         fixture.detectChanges();
 
-        translation.translationChanged.subscribe(
-            () => {
-                expect(fixture.debugElement.nativeElement).toContainText('The Metamorphosis');
-            }
-        );
+        expect(fixture.debugElement.nativeElement).toContainText('The Metamorphosis');
     }));
 
 });

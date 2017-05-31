@@ -1,35 +1,35 @@
 <br>
-<div *ngIf="!intlAPI" style="color: #D32F2F;" translate>Home.IntlAPI</div>
+<div *ngIf="!intlAPI" class="hasError" l10nTranslate>Home.IntlAPI</div>
 <br>
 
 <div class="app-card-container">
 
     <md-card>
-        <md-card-title translate>Home.Messages</md-card-title>
+        <md-card-title l10nTranslate>Home.Messages</md-card-title>
         <md-card-content>
-            <p translate>Home.Dummy text</p>
-            <p translate>Home.Author<span>&nbsp;</span><em translate>Home.Source title</em></p>
+            <p l10nTranslate>Home.Dummy text</p>
+            <p l10nTranslate>Home.Author<span>&nbsp;</span><em l10nTranslate>Home.Source title</em></p>
         </md-card-content>
     </md-card>
 
     <md-card>
-        <md-card-title translate>Home.Dates</md-card-title>
+        <md-card-title l10nTranslate>Home.Dates</md-card-title>
         <md-card-content>
-            <p localeDate="fullDate">{{ today }}</p>
+            <p l10nDate="fullDate">{{ today }}</p>
         </md-card-content>
     </md-card>
 
     <md-card>
-        <md-card-title translate>Home.Numbers</md-card-title>
+        <md-card-title l10nTranslate>Home.Numbers</md-card-title>
         <md-card-content>
-            <h3 translate>Home.Decimals</h3>
-            <p translate>Home.Pi<span>&nbsp;</span><span localeDecimal="1.5-5">{{ pi }}</span></p>
+            <h3 l10nTranslate>Home.Decimals</h3>
+            <p l10nTranslate>Home.Pi<span>&nbsp;</span><span l10nDecimal="1.5-5">{{ pi }}</span></p>
             <br>
-            <h3 translate>Home.Percentages</h3>
-            <p localePercent="1.0-0">{{ a }} </p>
+            <h3 l10nTranslate>Home.Percentages</h3>
+            <p l10nPercent="1.0-0">{{ a }} </p>
             <br>
-            <h3 translate>Home.Currencies</h3>
-            <p localeCurrency="1.2-2" [symbol]="true">{{ b }}</p>
+            <h3 l10nTranslate>Home.Currencies</h3>
+            <p l10nCurrency="1.2-2" [symbol]="true">{{ b }}</p>
         </md-card-content>
     </md-card>
 

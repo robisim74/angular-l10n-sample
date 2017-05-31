@@ -39,10 +39,10 @@
     },
     "Validation": {
         "Numbers": "Numeri",
-        "Number is invalid": "Il numero non è valido. Il formato richiesto è:",
-        "Min value error": "Il valore minimo è:",
-        "Max value error": "Il valore massimo è:",
-        "Number value": "Valore del numero:",
+        "Number is invalid": "Il numero non è valido. Il formato richiesto è: {{ format }}",
+        "Min value error": "Il valore minimo è: {{ minValue }}",
+        "Max value error": "Il valore massimo è: {{ maxValue }}",
+        "Number value": "Valore del numero: {{ parsedValue }}",
         "Submit": "Invia"
     }
 }

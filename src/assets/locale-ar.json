@@ -39,10 +39,10 @@
     },
     "Validation": {
         "Numbers": "الأرقام",
-        "Number is invalid": "عدد غير صالح. الشكل المطلوب:",
-        "Min value error": "قيمة الحد الأدنى:",
-        "Max value error": "القيمة القصوى:",
-        "Number value": "القيمة:",
+        "Number is invalid": "عدد غير صالح. الشكل المطلوب: {{ format }}",
+        "Min value error": "قيمة الحد الأدنى: {{ minValue }}",
+        "Max value error": "القيمة القصوى: {{ maxValue }}",
+        "Number value": "القيمة: {{ parsedValue }}",
         "Submit": "إرسال"
     }
 }

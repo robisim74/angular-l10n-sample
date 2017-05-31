@@ -20,6 +20,7 @@ export class ListModule {
         this.translation.addConfiguration()
             .addProvider('./src/assets/locale-list-')
             .addProvider('./src/assets/locale-position-');
+
         this.translation.init();
     }
 

@@ -39,10 +39,10 @@
     },
     "Validation": {
         "Numbers": "Numbers",
-        "Number is invalid": "Number is invalid. Required format:",
-        "Min value error": "Minimum value:",
-        "Max value error": "Maximum value:",
-        "Number value": "Number value:",
+        "Number is invalid": "Number is invalid. Required format: {{ format }}",
+        "Min value error": "Minimum value: {{ minValue }}",
+        "Max value error": "Maximum value: {{ maxValue }}",
+        "Number value": "Number value: {{ parsedValue }}",
         "Submit": "Submit"
     }
 }

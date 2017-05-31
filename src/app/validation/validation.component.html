@@ -9,21 +9,21 @@
                         <input mdInput placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}" [formControl]="decimal" (keyup)="decimal.valid ? parsedValue : parsedValue = null">
                     </md-input-container>
 
-                    <div *ngIf="decimal.hasError('format')" style="color: #D32F2F;">
-                        {{ 'Validation.Number is invalid' | translate:lang }} {{ 0 | localeDecimal:defaultLocale:digits }}
+                    <div *ngIf="decimal.hasError('format')" class="hasError">
+                        {{ 'Validation.Number is invalid' | translate:lang:{ format: 0 | localeDecimal:defaultLocale:digits } }}
                     </div>
-                    <div *ngIf="decimal.hasError('minValue')" style="color: #D32F2F;">
-                        {{ 'Validation.Min value error' | translate:lang }} {{ minValue | localeDecimal:defaultLocale:digits }}
+                    <div *ngIf="decimal.hasError('minValue')" class="hasError">
+                        {{ 'Validation.Min value error' | translate:lang:{ minValue: minValue | localeDecimal:defaultLocale:digits } }}
                     </div>
-                    <div *ngIf="decimal.hasError('maxValue')" style="color: #D32F2F;">
-                        {{ 'Validation.Max value error' | translate:lang }} {{ maxValue | localeDecimal:defaultLocale:digits }}
+                    <div *ngIf="decimal.hasError('maxValue')" class="hasError">
+                        {{ 'Validation.Max value error' | translate:lang:{ maxValue: maxValue | localeDecimal:defaultLocale:digits } }}
                     </div>
                 </div>
                 <br>
                 <button type="submit" [disabled]="!decimal.valid" md-raised-button color="primary">{{ 'Validation.Submit' | translate:lang }}</button>
                 <br>
                 <br>
-                <p>{{ 'Validation.Number value' | translate:lang }} {{ parsedValue }}</p>
+                <p>{{ 'Validation.Number value' | translate:lang:{ parsedValue: parsedValue || "" } }}</p>
             </form>
         </md-card-content>
     </md-card>
