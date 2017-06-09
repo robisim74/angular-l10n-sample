@@ -14,10 +14,15 @@
     <md-card>
         <md-card-title>{{ 'I18n.Plural' | translate:lang }}</md-card-title>
         <md-card-content>
-            <form (ngSubmit)="addMessage(i18nForm.value)" #i18nForm="ngForm">
+            <form #i18nForm="ngForm" (ngSubmit)="addMessage()" novalidate>
                 <md-input-container style="width: 100%">
-                    <input mdInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required>
+                    <textarea mdInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required></textarea>
+                    <md-error>
+                        {{ 'I18n.Message error' | translate:lang }}
+                    </md-error>
                 </md-input-container>
+                <br>
+                <br>
                 <button type="submit" md-raised-button color="primary" [disabled]="!i18nForm.form.valid">{{ 'I18n.Add' | translate:lang }}</button>
                 <br>
                 <br>

@@ -23,7 +23,7 @@
         <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'desc')" [disabled]="order == 'desc'">{{ 'Order by desc position' | translate:lang }}</button><br>
 
         <md-input-container>
-            <input mdInput [(ngModel)]="s" (keyup)="filterData(keyName, order)" placeholder="{{ 'Search by position' | translate:lang }}">
+            <input mdInput [(ngModel)]="s" placeholder="{{ 'Search by position' | translate:lang }}" (keyup)="filterData(keyName, order)">
         </md-input-container>
 
     </div>

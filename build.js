@@ -16,13 +16,13 @@ exec('tslint --project ./tsconfig.json --type-check ./src/**/*.ts -e ./src/main-
 echo(chalk.green('TSLint completed'));
 
 /* Aot compilation */
-echo(`Start AoT compilation`);
+echo('Start AoT compilation');
 echo('ngc -p tsconfig-aot.json');
-if (exec(`ngc -p tsconfig-aot.json`).code !== 0) {
-    echo(chalk.red(`Error: AoT compilation failed`));
+if (exec('ngc -p tsconfig-aot.json').code !== 0) {
+    echo(chalk.red('Error: AoT compilation failed'));
     exit(1);
 }
-echo(chalk.green(`AoT compilation completed`));
+echo(chalk.green('AoT compilation completed'));
 
 /* Tree shaking & minification with webpack */
 echo('Start Tree shaking & minification');

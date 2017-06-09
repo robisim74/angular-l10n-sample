@@ -31,8 +31,9 @@
         "male": "ذكر",
         "Invite her": "ادعوها",
         "Invite him": "دعوة له",
-        "Add message": "أضف رسالة جديدة",
+        "Add message": "اكتب رسالة",
         "Add": "أضف",
+        "Message error": "الرسالة مطلوبة",
         "No messages": "لا توجد رسائل",
         "One message": "رسالة واحدة",
         "messages": "رسائل"
@@ -43,6 +44,10 @@
         "Min value error": "قيمة الحد الأدنى: {{ minValue }}",
         "Max value error": "القيمة القصوى: {{ maxValue }}",
         "Number value": "القيمة: {{ parsedValue }}",
-        "Submit": "إرسال"
+        "Submit": "إرسال",
+        "Dates": "التمور",
+        "Choose a date": "اختر تاريخا",
+        "Date is invalid": "التاريخ غير صالح",
+        "Date value": "تاريخ: {{ parsedDate }}"
     }
 }

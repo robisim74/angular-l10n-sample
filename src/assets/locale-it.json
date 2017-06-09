@@ -31,8 +31,9 @@
         "male": "maschio",
         "Invite her": "Invitala",
         "Invite him": "Invitalo",
-        "Add message": "Aggiungi un nuovo messaggio",
+        "Add message": "Scrivi un messaggio",
         "Add": "Aggiungi",
+        "Message error": "Il messaggio è richiesto",
         "No messages": "Nessun messaggio",
         "One message": "Un messaggio",
         "messages": "messaggi"
@@ -43,6 +44,10 @@
         "Min value error": "Il valore minimo è: {{ minValue }}",
         "Max value error": "Il valore massimo è: {{ maxValue }}",
         "Number value": "Valore del numero: {{ parsedValue }}",
-        "Submit": "Invia"
+        "Submit": "Invia",
+        "Dates": "Date",
+        "Choose a date": "Scegli una data",
+        "Date is invalid": "La data non è valida",
+        "Date value": "Data: {{ parsedDate }}"
     }
 }

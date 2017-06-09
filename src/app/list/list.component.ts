@@ -13,7 +13,7 @@ import {
 
 @Component({
     templateUrl: 'list.component.html',
-    viewProviders: [Collator]
+    providers: [Collator]
 })
 export class ListComponent implements OnInit, OnDestroy {
 

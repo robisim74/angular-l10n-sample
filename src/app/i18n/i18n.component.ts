@@ -37,8 +37,8 @@ export class I18nComponent implements OnInit {
         //
     }
 
-    addMessage(value: any): void {
-        this.messages.push(value.message);
+    addMessage(): void {
+        this.messages.push(this.message);
         this.message = "";
     }
 

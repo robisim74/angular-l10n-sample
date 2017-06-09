@@ -5,6 +5,8 @@
 Make sure that you have the latest version of _npm_:
 ```Shell
 npm install npm@latest -g
+
+npm cache verify
 ```
 
 - For development, we use _JiT compilation_ with Hot Module Replacement:
