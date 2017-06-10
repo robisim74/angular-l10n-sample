@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { LayoutDirection } from '@angular/material';
 import { ISubscription } from 'rxjs/Subscription';
 
 import { LocaleService, TranslationService } from 'angular-l10n';
-
-import { LayoutDirection } from '@angular/material';
 
 @Component({
     selector: 'app-component',

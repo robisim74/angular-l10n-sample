@@ -19,15 +19,15 @@ export class ValidationComponent implements OnInit, OnDestroy {
 
     model: any = {};
 
+    minDate: Date = new Date();
+    maxDate: Date = new Date();
+
     digits: string = "1.2-2";
     minValue: number = -Math.round(Math.random() * 10000) / 100;
     maxValue: number = Math.round(Math.random() * 10000) / 100;
 
-    minDate: Date = new Date();
-    maxDate: Date = new Date();
-
-    parsedValue: number | null = null;
     parsedDate: Date | null = null;
+    parsedValue: number | null = null;
 
     subscription: ISubscription;
 
@@ -44,10 +44,10 @@ export class ValidationComponent implements OnInit, OnDestroy {
         this.dateAdapter.setLocale(this.locale.getDefaultLocale());
         this.subscription = this.locale.defaultLocaleChanged.subscribe(
             (defaultLocale: string) => {
-                this.model.decimal = null;
                 this.model.date = null;
-                this.parsedValue = null;
+                this.model.decimal = null;
                 this.parsedDate = null;
+                this.parsedValue = null;
 
                 this.dateAdapter.setLocale(defaultLocale);
             }
@@ -58,12 +58,12 @@ export class ValidationComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    onNumberSubmit(): void {
-        this.parsedValue = this.localeValidation.parseNumber(this.model.decimal);
-    }
-
     onDateSubmit(): void {
         this.parsedDate = this.model.date;
+    }
+
+    onNumberSubmit(): void {
+        this.parsedValue = this.localeValidation.parseNumber(this.model.decimal);
     }
 
 }

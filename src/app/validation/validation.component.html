@@ -1,12 +1,44 @@
 <div class="app-card-container">
 
     <md-card>
+        <md-card-title>{{ 'Validation.Dates' | translate:lang }}</md-card-title>
+        <md-card-content>
+            <form #dateForm="ngForm" (ngSubmit)="onDateSubmit()" novalidate>
+                <md-input-container style="width: 100%">
+                    <input mdInput [(ngModel)]="model.date" name="date" #date="ngModel" placeholder="{{ 'Validation.Choose a date' | translate:lang }}"
+                        [mdDatepicker]="picker" [min]="minDate" [max]="maxDate" required readonly>
+                    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                    <md-error>
+                        <div *ngIf="date.errors?.required; then thenBlock else elseBlock"></div>
+                        <ng-template #thenBlock>
+                            {{ 'Validation.Date is required' | translate:lang }}
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            {{ 'Validation.Date is invalid' | translate:lang }}
+                        </ng-template>
+                    </md-error>
+                </md-input-container>
+                <md-datepicker #picker></md-datepicker>
+                <br>
+                <br>
+                <button type="submit" md-raised-button color="primary" [disabled]="!dateForm.form.valid">{{ 'Validation.Submit' | translate:lang }}</button>
+                <br>
+                <br>
+                <p>{{ 'Validation.Date value' | translate:lang:{ parsedDate: parsedDate || "" } }}</p>
+            </form>
+        </md-card-content>
+    </md-card>
+
+    <md-card>
         <md-card-title>{{ 'Validation.Numbers' | translate:lang }}</md-card-title>
         <md-card-content>
             <form #numberForm="ngForm" (ngSubmit)="onNumberSubmit()" novalidate>
                 <md-input-container style="width: 100%">
                     <input mdInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}"
-                        [l10nValidateNumber]="digits" [minValue]="minValue" [maxValue]="maxValue" (keyup)="decimal.valid ? parsedValue : parsedValue = null">
+                        [l10nValidateNumber]="digits" [minValue]="minValue" [maxValue]="maxValue" required (keyup)="decimal.valid ? parsedValue : parsedValue = null">
+                    <md-error *ngIf="decimal.errors?.required">
+                        {{ 'Validation.Number is required' | translate:lang }}
+                    </md-error>
                     <md-error *ngIf="decimal.errors?.format">
                         {{ 'Validation.Number is invalid' | translate:lang:{ format: 0 | localeDecimal:defaultLocale:digits } }}
                     </md-error>
@@ -23,29 +55,6 @@
                 <br>
                 <br>
                 <p>{{ 'Validation.Number value' | translate:lang:{ parsedValue: parsedValue || "" } }}</p>
-            </form>
-        </md-card-content>
-    </md-card>
-
-    <md-card>
-        <md-card-title>{{ 'Validation.Dates' | translate:lang }}</md-card-title>
-        <md-card-content>
-            <form #dateForm="ngForm" (ngSubmit)="onDateSubmit()" novalidate>
-                <md-input-container style="width: 100%">
-                    <input mdInput [(ngModel)]="model.date" name="date" placeholder="{{ 'Validation.Choose a date' | translate:lang }}" [mdDatepicker]="picker"
-                        [min]="minDate" [max]="maxDate" readonly>
-                    <button mdSuffix [mdDatepickerToggle]="picker"></button>
-                    <md-error>
-                        {{ 'Validation.Date is invalid' | translate:lang }}
-                    </md-error>
-                </md-input-container>
-                <md-datepicker #picker></md-datepicker>
-                <br>
-                <br>
-                <button type="submit" md-raised-button color="primary" [disabled]="!dateForm.form.valid">{{ 'Validation.Submit' | translate:lang }}</button>
-                <br>
-                <br>
-                <p>{{ 'Validation.Date value' | translate:lang:{ parsedDate: parsedDate || "" } }}</p>
             </form>
         </md-card-content>
     </md-card>

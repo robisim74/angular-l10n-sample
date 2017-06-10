@@ -33,7 +33,7 @@
         "Invite him": "Invite him",
         "Add message": "Write a message",
         "Add": "Add",
-        "Message error": "Message is required",
+        "Message is required": "Message is required",
         "No messages": "No messages",
         "One message": "One message",
         "messages": "messages"
@@ -43,11 +43,13 @@
         "Number is invalid": "Number is invalid. Required format: {{ format }}",
         "Min value error": "Minimum value: {{ minValue }}",
         "Max value error": "Maximum value: {{ maxValue }}",
+        "Number is required": "Number is required",
         "Number value": "Number value: {{ parsedValue }}",
         "Submit": "Submit",
         "Dates": "Dates",
         "Choose a date": "Choose a date",
         "Date is invalid": "Date is invalid",
+        "Date is required": "Date is required",
         "Date value": "Date: {{ parsedDate }}"
     }
 }
