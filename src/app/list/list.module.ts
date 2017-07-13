@@ -18,6 +18,7 @@ export class ListModule {
 
     constructor(public translation: TranslationService) {
         this.translation.addConfiguration()
+            .addProvider('./src/assets/locale-')
             .addProvider('./src/assets/locale-list-')
             .addProvider('./src/assets/locale-position-');
 

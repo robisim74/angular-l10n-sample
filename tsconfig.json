@@ -13,15 +13,12 @@
             "es2015",
             "dom"
         ],
-        "types": [
-            "jasmine",
-            "jasmine-jquery",
-            "node"
+        "typeRoots": [
+            "./node_modules/@types/"
         ]
     },
     "exclude": [
         "node_modules",
-        "aot",
         "src/main-aot.ts"
     ],
     "awesomeTypescriptLoaderOptions": {

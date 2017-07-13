@@ -14,13 +14,8 @@
             "dom"
         ]
     },
-    "files": [
-        "src/app/app.module.ts",
-        "src/app/list/list.module.ts",
-        "src/main-aot.ts"
-    ],
     "angularCompilerOptions": {
-        "genDir": "aot",
-        "skipMetadataEmit": true
+        "genDir": "./aot",
+        "entryModule": "./src/app/app.module#AppModule"
     }
 }

@@ -8,9 +8,9 @@ import {
     MdButtonModule,
     MdRadioModule,
     MdIconModule,
+    MdMenuModule,
     MdDatepickerModule,
-    MdNativeDateModule,
-    RtlModule
+    MdNativeDateModule
 } from '@angular/material';
 
 const materialModules: any[] = [
@@ -22,9 +22,9 @@ const materialModules: any[] = [
     MdButtonModule,
     MdRadioModule,
     MdIconModule,
+    MdMenuModule,
     MdDatepickerModule,
-    MdNativeDateModule,
-    RtlModule
+    MdNativeDateModule
 ];
 
 @NgModule({

@@ -13,7 +13,8 @@ export class MessagesLocalization extends NgLocalization {
 }
 
 @Component({
-    templateUrl: 'i18n.component.html',
+    templateUrl: './i18n.component.html',
+    styleUrls: ['./i18n.component.scss'],
     providers: [{ provide: NgLocalization, useClass: MessagesLocalization }]
 })
 export class I18nComponent implements OnInit {

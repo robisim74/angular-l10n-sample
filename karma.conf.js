@@ -55,7 +55,7 @@ module.exports = function (config) {
                 exprContextCritical: false
             },
             resolve: {
-                extensions: ['.ts', '.js', '.html']
+                extensions: ['.ts', '.js']
             },
             devtool: 'inline-source-map',
             performance: { hints: false }

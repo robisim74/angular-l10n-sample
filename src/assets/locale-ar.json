@@ -2,9 +2,6 @@
     "App": {
         "Title": "Angular التعريب",
         "Subtitle": "إنه عالم صغير",
-        "Change country": "تغيير الدولة",
-        "Resources": "مصادر",
-        "Menu": "ملاحة",
         "Home": "الصفحة الرئيسية",
         "I18n": "تدويل",
         "List": "قائمة",

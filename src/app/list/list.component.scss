@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+
+.list-main-container {
+	display: flex;
+	flex-flow: row;
+
+	.list-card-container {
+		flex: 3 1 60%;
+		order: 1;
+
+		md-card {
+			margin: 8px;
+			width: 350px;
+		}
+	}
+	.list-aside-container {
+		margin: 8px;
+		flex: 1 1 40%;
+		order: 2;
+	}
+}
+
+.list-aside-container {
+	[md-raised-button], md-input-container {
+		margin: 5px;
+	}
+}
+
+@media ($xsmall) {
+	.list-main-container {
+		flex-flow: column;
+		flex-direction: column;
+		
+		.list-card-container, .list-aside-container {
+			order: 0;
+		}
+	}
+}

@@ -1,15 +1,17 @@
-<div class="app-card-container">
+<h1 l10nTranslate>App.Validation</h1>
+
+<div class="validation-card-container">
 
     <md-card>
         <md-card-title>{{ 'Validation.Dates' | translate:lang }}</md-card-title>
         <md-card-content>
             <form #dateForm="ngForm" (ngSubmit)="onDateSubmit()" novalidate>
-                <md-input-container style="width: 100%">
+                <md-input-container class="full-width">
                     <input mdInput [(ngModel)]="model.date" name="date" #date="ngModel" placeholder="{{ 'Validation.Choose a date' | translate:lang }}"
                         [mdDatepicker]="picker" [min]="minDate" [max]="maxDate" required readonly>
                     <button mdSuffix [mdDatepickerToggle]="picker"></button>
                     <md-error>
-                        <div *ngIf="date.errors?.required; then thenBlock else elseBlock"></div>
+                        <div *ngIf="date.hasError('required'); then thenBlock else elseBlock"></div>
                         <ng-template #thenBlock>
                             {{ 'Validation.Date is required' | translate:lang }}
                         </ng-template>
@@ -33,19 +35,19 @@
         <md-card-title>{{ 'Validation.Numbers' | translate:lang }}</md-card-title>
         <md-card-content>
             <form #numberForm="ngForm" (ngSubmit)="onNumberSubmit()" novalidate>
-                <md-input-container style="width: 100%">
+                <md-input-container class="full-width">
                     <input mdInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}"
                         [l10nValidateNumber]="digits" [minValue]="minValue" [maxValue]="maxValue" required (keyup)="decimal.valid ? parsedValue : parsedValue = null">
-                    <md-error *ngIf="decimal.errors?.required">
+                    <md-error *ngIf="decimal.hasError('required')">
                         {{ 'Validation.Number is required' | translate:lang }}
                     </md-error>
-                    <md-error *ngIf="decimal.errors?.format">
+                    <md-error *ngIf="decimal.hasError('format')">
                         {{ 'Validation.Number is invalid' | translate:lang:{ format: 0 | localeDecimal:defaultLocale:digits } }}
                     </md-error>
-                    <md-error *ngIf="decimal.errors?.minValue">
+                    <md-error *ngIf="decimal.hasError('minValue')">
                         {{ 'Validation.Min value error' | translate:lang:{ minValue: minValue | localeDecimal:defaultLocale:digits } }}
                     </md-error>
-                    <md-error *ngIf="decimal.errors?.maxValue">
+                    <md-error *ngIf="decimal.hasError('maxValue')">
                         {{ 'Validation.Max value error' | translate:lang:{ maxValue: maxValue | localeDecimal:defaultLocale:digits } }}
                     </md-error>
                 </md-input-container>

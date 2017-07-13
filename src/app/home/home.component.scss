@@ -1,0 +1,9 @@
+.home-card-container {
+	display: flex;
+	flex-flow: row wrap;
+
+	md-card {
+		margin: 8px;
+		width: 350px;
+	}
+}

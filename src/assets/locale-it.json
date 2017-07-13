@@ -2,9 +2,6 @@
     "App": {
         "Title": "Localizzazione in Angular",
         "Subtitle": "Il mondo è piccolo",
-        "Change country": "Cambia Paese",
-        "Resources": "Risorse",
-        "Menu": "Navigazione",
         "Home": "Home",
         "I18n": "i18n",
         "List": "Lista",

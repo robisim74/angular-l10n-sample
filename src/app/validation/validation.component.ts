@@ -10,7 +10,8 @@ import {
 } from 'angular-l10n';
 
 @Component({
-    templateUrl: 'validation.component.html'
+    templateUrl: 'validation.component.html',
+    styleUrls: ['./validation.component.scss']
 })
 export class ValidationComponent implements OnInit, OnDestroy {
 

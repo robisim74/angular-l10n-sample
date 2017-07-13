@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ngToolsWebpack = require('@ngtools/webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -24,7 +25,7 @@ if (!isProd) {
             rules: [
                 {
                     test: /\.ts$/,
-                    loaders: [
+                    use: [
                         'awesome-typescript-loader',
                         'angular-router-loader',
                         'angular2-template-loader',
@@ -33,21 +34,22 @@ if (!isProd) {
                 },
                 {
                     test: /\.html$/,
-                    loader: 'raw-loader'
+                    use: 'raw-loader'
                 },
                 {
-                    test: /\.css$/,
-                    loaders: [
+                    test: /\.scss$/,
+                    include: path.join(__dirname, 'src/styles'),
+                    use: [
                         'style-loader',
                         'css-loader',
-                        'raw-loader'
+                        'sass-loader'
                     ]
                 },
                 {
                     test: /\.scss$/,
-                    loaders: [
-                        'style-loader',
-                        'css-loader',
+                    exclude: path.join(__dirname, 'src/styles'),
+                    use: [
+                        'raw-loader',
                         'sass-loader'
                     ]
                 }
@@ -65,10 +67,12 @@ if (!isProd) {
         ],
 
         resolve: {
-            extensions: ['.ts', '.js', '.html', '.css', '.scss']
+            extensions: ['.ts', '.js']
         },
 
         devtool: 'source-map',
+
+        watch: true,
 
         performance: { hints: false }
 
@@ -92,29 +96,29 @@ if (!isProd) {
             rules: [
                 {
                     test: /\.ts$/,
-                    loaders: [
-                        'awesome-typescript-loader',
-                        'angular-router-loader?aot=true&genDir=aot/',
+                    use: [
+                        '@ngtools/webpack',
                         'source-map-loader'
                     ]
                 },
                 {
                     test: /\.html$/,
-                    loader: 'raw-loader'
+                    use: 'raw-loader'
                 },
                 {
-                    test: /\.css$/,
-                    loaders: [
+                    test: /\.scss$/,
+                    include: path.join(__dirname, 'src/styles'),
+                    use: [
                         'style-loader',
                         'css-loader',
-                        'raw-loader'
+                        'sass-loader'
                     ]
                 },
                 {
                     test: /\.scss$/,
-                    loaders: [
-                        'style-loader',
-                        'css-loader',
+                    exclude: path.join(__dirname, 'src/styles'),
+                    use: [
+                        'raw-loader',
                         'sass-loader'
                     ]
                 }
@@ -123,6 +127,10 @@ if (!isProd) {
         },
 
         plugins: [
+            // AoT plugin.
+            new ngToolsWebpack.AotPlugin({
+                tsConfigPath: './tsconfig-aot.json'
+            }),
             // Minimizes the bundle.
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
@@ -142,11 +150,7 @@ if (!isProd) {
         ],
 
         resolve: {
-            modules: [
-                'node_modules',
-                path.resolve(__dirname, 'src')
-            ],
-            extensions: ['.ts', '.js', '.html', '.css', '.scss']
+            extensions: ['.ts', '.js']
         },
 
         devtool: 'source-map',

@@ -13,6 +13,7 @@ import {
 
 @Component({
     templateUrl: 'list.component.html',
+    styleUrls: ['./list.component.scss'],
     providers: [Collator]
 })
 export class ListComponent implements OnInit, OnDestroy {

@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { LayoutDirection } from '@angular/material';
+import { Direction } from '@angular/material';
 import { ISubscription } from 'rxjs/Subscription';
 
 import { LocaleService, TranslationService } from 'angular-l10n';
 
 @Component({
     selector: 'app-component',
-    templateUrl: 'app.component.html'
+    templateUrl: './app.component.html'
 })
 /**
  * AppComponent class doesn't use decorators
@@ -15,11 +15,25 @@ import { LocaleService, TranslationService } from 'angular-l10n';
  */
 export class AppComponent implements OnInit, OnDestroy {
 
+    navItems: any[] = [
+        { name: 'App.Home', route: 'home' },
+        { name: 'App.I18n', route: 'i18n' },
+        { name: 'App.List', route: 'list' },
+        { name: 'App.Validation', route: 'validation' }
+    ];
+
+    countryMenuItems: any[] = [
+        { text: 'United States', language: 'en', country: 'US', currency: 'USD'},
+        { text: 'United Kingdom', language: 'en', country: 'GB', currency: 'GBP'},
+        { text: 'Italia', language: 'it', country: 'IT', currency: 'EUR'},
+        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', currency: 'SAR'}
+    ];
+
     get currentCountry(): string {
         return this.locale.getCurrentCountry();
     }
 
-    dir: LayoutDirection;
+    dir: Direction;
 
     subscription: ISubscription;
 
@@ -42,8 +56,8 @@ export class AppComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    getLanguageDirection(language?: string): LayoutDirection {
-        return this.locale.getLanguageDirection(language) as LayoutDirection;
+    getLanguageDirection(language?: string): Direction {
+        return this.locale.getLanguageDirection(language) as Direction;
     }
 
     selectLocale(language: string, country: string, currency: string): void {

@@ -1,62 +1,56 @@
 <md-sidenav-container class="app-root" #root="$implicit" [dir]="dir" fullscreen>
 
     <md-sidenav #start mode="over">
-
         <md-nav-list>
-            <h3 l10nTranslate>App.Menu</h3>
-            <a routerLinkActive="active-link" md-list-item routerLink="/home" l10nTranslate>App.Home</a>
-            <a routerLinkActive="active-link" md-list-item routerLink="/i18n" l10nTranslate>App.I18n</a>
-            <a routerLinkActive="active-link" md-list-item routerLink="/list" l10nTranslate>App.List</a>
-            <a routerLinkActive="active-link" md-list-item routerLink="/validation" l10nTranslate>App.Validation</a>
+            <a *ngFor="let navItem of navItems" md-list-item routerLinkActive="active-link" (click)="start.close()" [routerLink]="[navItem.route]"
+                l10nTranslate>
+                {{ navItem.name }}
+            </a>
         </md-nav-list>
-
-        <md-nav-list>
-            <h3 l10nTranslate>App.Change country</h3>
-            <md-list-item>
-                <a md-line (click)="selectLocale('en', 'US', 'USD'); root.dir = getLanguageDirection('en')">United States</a>
-                <md-icon *ngIf="currentCountry == 'US'">done</md-icon>
-            </md-list-item>
-            <md-list-item>
-                <a md-line (click)="selectLocale('en', 'GB', 'GBP'); root.dir = getLanguageDirection('en')">United Kingdom</a>
-                <md-icon *ngIf="currentCountry == 'GB'">done</md-icon>
-            </md-list-item>
-            <md-list-item>
-                <a md-line (click)="selectLocale('it', 'IT', 'EUR'); root.dir = getLanguageDirection('it')">Italia</a>
-                <md-icon *ngIf="currentCountry == 'IT'">done</md-icon>
-            </md-list-item>
-            <md-list-item>
-                <a md-line (click)="selectLocale('ar', 'SA', 'SAR'); root.dir = getLanguageDirection('ar')">المملكة العربية السعودية</a>
-                <md-icon *ngIf="currentCountry == 'SA'">done</md-icon>
-            </md-list-item>
-        </md-nav-list>
-
-        <md-nav-list>
-            <h3 l10nTranslate>App.Resources</h3>
-            <a md-list-item href="https://github.com/robisim74/angular-l10n-sample" l10nTranslate>App.Source code</a>
-        </md-nav-list>
-
     </md-sidenav>
 
     <div>
-        <md-toolbar color="primary">
+        <md-toolbar color="primary" class="mat-elevation-z6">
             <button md-icon-button (click)="start.open()">
-                <md-icon class="md-24">menu</md-icon>
+                <md-icon>menu</md-icon>
             </button>
             <div class="app-toolbar">
                 <h1 l10nTranslate>App.Title</h1>
 
                 <span class="fill-remaining-space"></span>
+                <div class="menu-section">
+                    <button md-icon-button [mdMenuTriggerFor]="countryMenu" aria-label="Open x-positioned menu">
+                        <md-icon>translate</md-icon>
+                    </button>
+
+                    <md-menu xPosition="before" #countryMenu="mdMenu" class="before">
+                        <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.currency); root.dir = getLanguageDirection(item.language)"
+                            md-menu-item>
+                            {{ item.text }}
+                            <md-icon *ngIf="currentCountry == item.country">done</md-icon>
+                        </a>
+                    </md-menu>
+                </div>
+                <div class="menu-section">
+                    <button md-icon-button [mdMenuTriggerFor]="posXMenu" aria-label="Open x-positioned menu">
+                        <md-icon>more_vert</md-icon>
+                    </button>
+
+                    <md-menu xPosition="before" #posXMenu="mdMenu" class="before">
+                        <a href="https://github.com/robisim74/angular-l10n-sample" md-menu-item l10nTranslate>
+                            <md-icon>code</md-icon>App.Source code
+                        </a>
+                    </md-menu>
+                </div>
             </div>
-            <md-toolbar-row>
+            <md-toolbar-row class="app-toolbar-row">
                 <span l10nTranslate>App.Subtitle</span>
             </md-toolbar-row>
         </md-toolbar>
-    </div>
 
-    <div class="app-content">
-
-        <router-outlet></router-outlet>
-
+        <div class="app-content">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 
 </md-sidenav-container>

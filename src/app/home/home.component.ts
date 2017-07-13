@@ -3,7 +3,8 @@
 import { IntlAPI } from 'angular-l10n';
 
 @Component({
-    templateUrl: 'home.component.html'
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
 /**
  * HomeComponent class doesn't use decorators

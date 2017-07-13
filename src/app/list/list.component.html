@@ -1,7 +1,8 @@
-<div class="app-main-container">
+<h1 l10nTranslate>App.List</h1>
 
-    <div class="app-card-container">
+<div class="list-main-container">
 
+    <div class="list-card-container">
         <md-card *ngFor="let item of DATA | async">
             <md-card-title>{{ item.name }}</md-card-title>
             <md-card-content>
@@ -14,18 +15,15 @@
                 </md-list>
             </md-card-content>
         </md-card>
-
     </div>
 
-    <div class="app-aside-container" *ngIf="intlAPI">
-
+    <div class="list-aside-container" *ngIf="intlAPI">
         <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'asc')" [disabled]="order == 'asc'">{{ 'Order by position' | translate:lang }}</button><br>
         <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'desc')" [disabled]="order == 'desc'">{{ 'Order by desc position' | translate:lang }}</button><br>
 
         <md-input-container>
             <input mdInput [(ngModel)]="s" placeholder="{{ 'Search by position' | translate:lang }}" (keyup)="filterData(keyName, order)">
         </md-input-container>
-
     </div>
 
 </div>

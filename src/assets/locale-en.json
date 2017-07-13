@@ -2,9 +2,6 @@
     "App": {
         "Title": "Angular localization",
         "Subtitle": "It's a small world",
-        "Change country": "Change country",
-        "Resources": "Resources",
-        "Menu": "Navigation",
         "Home": "Home",
         "I18n": "I18n",
         "List": "List",

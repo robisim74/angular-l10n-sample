@@ -1,4 +1,6 @@
-<div class="app-card-container">
+<h1 l10nTranslate>App.I18n</h1>
+
+<div class="i18n-card-container">
 
     <md-card>
         <md-card-title>{{ 'I18n.Gender' | translate:lang }}</md-card-title>
@@ -15,7 +17,7 @@
         <md-card-title>{{ 'I18n.Plural' | translate:lang }}</md-card-title>
         <md-card-content>
             <form #i18nForm="ngForm" (ngSubmit)="addMessage()" novalidate>
-                <md-input-container style="width: 100%">
+                <md-input-container class="full-width">
                     <textarea mdInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required></textarea>
                     <md-error>
                         {{ 'I18n.Message is required' | translate:lang }}
