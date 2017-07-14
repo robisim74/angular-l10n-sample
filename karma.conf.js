@@ -1,4 +1,5 @@
 // Karma configuration for Unit testing
+const path = require('path');
 
 module.exports = function (config) {
 
@@ -33,7 +34,7 @@ module.exports = function (config) {
                 rules: [
                     {
                         test: /\.ts$/,
-                        loaders: [
+                        use: [
                             'awesome-typescript-loader',
                             'angular2-template-loader',
                             'source-map-loader'
@@ -41,13 +42,22 @@ module.exports = function (config) {
                     },
                     {
                         test: /\.html$/,
-                        loader: 'raw-loader'
+                        use: 'raw-loader'
                     },
                     {
                         test: /\.scss$/,
-                        loaders: [
+                        include: path.join(__dirname, 'src/styles'),
+                        use: [
                             'style-loader',
                             'css-loader',
+                            'sass-loader'
+                        ]
+                    },
+                    {
+                        test: /\.scss$/,
+                        exclude: path.join(__dirname, 'src/styles'),
+                        use: [
+                            'raw-loader',
                             'sass-loader'
                         ]
                     }

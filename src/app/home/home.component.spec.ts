@@ -2,11 +2,11 @@ import { HomeComponent } from './home.component';
 
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
-import { MdCardModule } from '@angular/material';
+import { MaterialModule } from '@angular/material';
 
 import { LocalizationModule, LocaleService, TranslationService } from 'angular-l10n';
 
-import '../../styles/blue-amber.scss';
+import '../../styles.scss';
 
 describe('Component: HomeComponent', () => {
 
@@ -19,7 +19,7 @@ describe('Component: HomeComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                MdCardModule,
+                MaterialModule,
                 HttpModule,
                 LocalizationModule.forRoot()
             ],
