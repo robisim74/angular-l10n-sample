@@ -5,6 +5,8 @@
 	flex-flow: row;
 
 	.list-card-container {
+		display: flex;
+		flex-flow: row wrap;
 		flex: 3 1 60%;
 		order: 1;
 
@@ -21,8 +23,8 @@
 }
 
 .list-aside-container {
-	[md-raised-button], md-input-container {
-		margin: 5px;
+	[md-raised-button] {
+		margin-bottom: 10px;
 	}
 }
 
@@ -31,8 +33,11 @@
 		flex-flow: column;
 		flex-direction: column;
 		
-		.list-card-container, .list-aside-container {
-			order: 0;
+		.list-card-container {
+			order: 2;
+		}
+		.list-aside-container {
+			order: 1;
 		}
 	}
 }
