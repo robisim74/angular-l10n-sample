@@ -36,13 +36,13 @@
         <md-card-content>
             <form #numberForm="ngForm" (ngSubmit)="onNumberSubmit()" novalidate>
                 <md-input-container class="full-width">
-                    <input mdInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 0 | localeDecimal:defaultLocale:digits }}"
+                    <input mdInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 1000 | localeDecimal:defaultLocale:digits }}"
                         [l10nValidateNumber]="digits" [minValue]="minValue" [maxValue]="maxValue" required (keyup)="decimal.valid ? parsedValue : parsedValue = null">
                     <md-error *ngIf="decimal.hasError('required')">
                         {{ 'Validation.Number is required' | translate:lang }}
                     </md-error>
                     <md-error *ngIf="decimal.hasError('format')">
-                        {{ 'Validation.Number is invalid' | translate:lang:{ format: 0 | localeDecimal:defaultLocale:digits } }}
+                        {{ 'Validation.Number is invalid' | translate:lang:{ format: 1000 | localeDecimal:defaultLocale:digits } }}
                     </md-error>
                     <md-error *ngIf="decimal.hasError('minValue')">
                         {{ 'Validation.Min value error' | translate:lang:{ minValue: minValue | localeDecimal:defaultLocale:digits } }}

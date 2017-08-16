@@ -25,7 +25,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
 
     digits: string = "1.2-2";
     minValue: number = -Math.round(Math.random() * 10000) / 100;
-    maxValue: number = Math.round(Math.random() * 10000) / 100;
+    maxValue: number = Math.round(Math.random() * 10000000) / 100;
 
     parsedDate: Date | null = null;
     parsedValue: number | null = null;
