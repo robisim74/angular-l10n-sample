@@ -4,25 +4,37 @@ import { ListRoutingModule } from './list-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ListComponent } from './list.component';
 
-import { LocalizationModule, TranslationService } from 'angular-l10n';
+import {
+    L10nConfig,
+    L10nLoader,
+    LocalizationModule,
+    ProviderType
+} from 'angular-l10n';
+
+const l10nConfig: L10nConfig = {
+    translation: {
+        providers: [
+            { type: ProviderType.Static, prefix: './src/assets/locale-' },
+            { type: ProviderType.Static, prefix: './src/assets/locale-list-' },
+            { type: ProviderType.Static, prefix: './src/assets/locale-position-' }
+        ],
+        composedKeySeparator: '.',
+        missingValue: 'No key'
+    }
+};
 
 @NgModule({
     imports: [
         ListRoutingModule,
         SharedModule,
-        LocalizationModule.forChild() // New instance of TranslationService.
+        LocalizationModule.forChild(l10nConfig) // New instance of TranslationService.
     ],
     declarations: [ListComponent]
 })
 export class ListModule {
 
-    constructor(public translation: TranslationService) {
-        this.translation.addConfiguration()
-            .addProvider('./src/assets/locale-')
-            .addProvider('./src/assets/locale-list-')
-            .addProvider('./src/assets/locale-position-');
-
-        this.translation.init();
+    constructor(public l10nLoader: L10nLoader) {
+        this.l10nLoader.load();
     }
 
 }

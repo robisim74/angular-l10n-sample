@@ -1,10 +1,16 @@
 import { HomeComponent } from './home.component';
 
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@angular/material';
 
-import { LocalizationModule, LocaleService, TranslationService } from 'angular-l10n';
+import {
+    L10nConfig,
+    L10nLoader,
+    LocalizationModule,
+    StorageStrategy,
+    ProviderType
+} from 'angular-l10n';
 
 import '../../styles.scss';
 
@@ -13,15 +19,33 @@ describe('Component: HomeComponent', () => {
     let fixture: ComponentFixture<HomeComponent>;
     let comp: HomeComponent;
 
-    let locale: LocaleService;
-    let translation: TranslationService;
+    let l10nLoader: L10nLoader;
+
+    const l10nConfig: L10nConfig = {
+        locale: {
+            languages: [
+                { code: 'en', dir: 'ltr' }
+            ],
+            defaultLocale: { languageCode: 'en', countryCode: 'US' },
+            currency: 'USD',
+            storage: StorageStrategy.Disabled
+        },
+        translation: {
+            providers: [
+                // Karma serves files from 'base' relative path.
+                { type: ProviderType.Static, prefix: 'base/src/assets/locale-' }
+            ],
+            composedKeySeparator: '.',
+            missingValue: 'No key'
+        }
+    };
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 MaterialModule,
-                HttpModule,
-                LocalizationModule.forRoot()
+                HttpClientModule,
+                LocalizationModule.forRoot(l10nConfig)
             ],
             declarations: [HomeComponent]
         }).compileComponents();
@@ -31,20 +55,8 @@ describe('Component: HomeComponent', () => {
     });
 
     beforeEach((done: any) => {
-        locale = TestBed.get(LocaleService);
-        translation = TestBed.get(TranslationService);
-
-        locale.addConfiguration()
-            .disableStorage()
-            .addLanguages(['en'])
-            .defineDefaultLocale('en', 'US')
-            .defineCurrency('USD');
-
-        // Karma serves files from 'base' relative path.
-        translation.addConfiguration()
-            .addProvider('base/src/assets/locale-');
-
-        translation.init().then(() => done());
+        l10nLoader = TestBed.get(L10nLoader);
+        l10nLoader.load().then(() => done());
     });
 
     it('should render translated text', (() => {

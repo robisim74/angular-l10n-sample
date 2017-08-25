@@ -10,33 +10,41 @@ import { HomeComponent } from './home/home.component';
 import { I18nComponent } from './i18n/i18n.component';
 import { ValidationComponent } from './validation/validation.component';
 
-import { LocalizationModule, LocaleValidationModule, LocaleService, TranslationService } from 'angular-l10n';
+import {
+    L10nConfig,
+    L10nLoader,
+    LocalizationModule,
+    LocaleValidationModule,
+    StorageStrategy,
+    ProviderType
+} from 'angular-l10n';
+
+const l10nConfig: L10nConfig = {
+    locale: {
+        languages: [
+            { code: 'en', dir: 'ltr' },
+            { code: 'it', dir: 'ltr' },
+            { code: 'ar', dir: 'rtl' }
+        ],
+        defaultLocale: { languageCode: 'en', countryCode: 'US' },
+        currency: 'USD',
+        storage: StorageStrategy.Cookie,
+        cookieExpiration: 30
+    },
+    translation: {
+        providers: [
+            { type: ProviderType.Static, prefix: './src/assets/locale-' }
+        ],
+        caching: true,
+        composedKeySeparator: '.',
+        missingValue: 'No key',
+        i18nPlural: true
+    }
+};
 
 // Advanced initialization.
-@Injectable() export class LocalizationConfig {
-
-    constructor(public locale: LocaleService, public translation: TranslationService) { }
-
-    load(): Promise<void> {
-        this.locale.addConfiguration()
-            .addLanguage('en', 'ltr')
-            .addLanguage('it', 'ltr')
-            .addLanguage('ar', 'rtl')
-            .setCookieExpiration(30)
-            .defineDefaultLocale('en', 'US')
-            .defineCurrency('USD');
-
-        this.translation.addConfiguration()
-            .addProvider('./src/assets/locale-');
-
-        return this.translation.init();
-    }
-
-}
-
-// AoT compilation requires a reference to an exported function.
-export function initLocalization(localizationConfig: LocalizationConfig): Function {
-    return () => localizationConfig.load();
+export function initL10n(l10nLoader: L10nLoader): Function {
+    return () => l10nLoader.load();
 }
 
 // APP_INITIALIZER will execute the function when the app is initialized and delay what it provides.
@@ -46,7 +54,7 @@ export function initLocalization(localizationConfig: LocalizationConfig): Functi
         BrowserAnimationsModule,
         AppRoutingModule,
         SharedModule,
-        LocalizationModule.forRoot(), // New instance of LocaleService & TranslationService.
+        LocalizationModule.forRoot(l10nConfig),
         LocaleValidationModule.forRoot()
     ],
     declarations: [
@@ -57,11 +65,10 @@ export function initLocalization(localizationConfig: LocalizationConfig): Functi
     ],
     providers: [
         Title,
-        LocalizationConfig,
         {
             provide: APP_INITIALIZER,
-            useFactory: initLocalization,
-            deps: [LocalizationConfig],
+            useFactory: initL10n,
+            deps: [L10nLoader],
             multi: true
         }
     ],

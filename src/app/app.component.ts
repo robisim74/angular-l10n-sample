@@ -23,10 +23,10 @@ export class AppComponent implements OnInit, OnDestroy {
     ];
 
     countryMenuItems: any[] = [
-        { text: 'United States', language: 'en', country: 'US', currency: 'USD'},
-        { text: 'United Kingdom', language: 'en', country: 'GB', currency: 'GBP'},
-        { text: 'Italia', language: 'it', country: 'IT', currency: 'EUR'},
-        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', currency: 'SAR'}
+        { text: 'United States', language: 'en', country: 'US', currency: 'USD' },
+        { text: 'United Kingdom', language: 'en', country: 'GB', currency: 'GBP' },
+        { text: 'Italia', language: 'it', country: 'IT', currency: 'EUR' },
+        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', currency: 'SAR' }
     ];
 
     get currentCountry(): string {
@@ -40,11 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) { }
 
     ngOnInit(): void {
-        // Initializes the document title with the current translation at the time of the component loading.
-        this.title.setTitle(this.translation.translate('App.Title'));
-
         // When the language changes, refreshes the document title with the new translation.
-        this.subscription = this.translation.translationChanged.subscribe(
+        this.subscription = this.translation.translationChanged().subscribe(
             () => { this.title.setTitle(this.translation.translate('App.Title')); }
         );
 

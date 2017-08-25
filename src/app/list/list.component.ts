@@ -41,7 +41,7 @@ export class ListComponent implements OnInit, OnDestroy {
         this.initializeFilters();
 
         // Reinitializes filters when language changes.
-        this.subscription = this.translation.translationChanged.subscribe(
+        this.subscription = this.translation.translationChanged().subscribe(
             () => { this.initializeFilters(); }
         );
     }

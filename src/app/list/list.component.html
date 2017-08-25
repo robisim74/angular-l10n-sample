@@ -9,8 +9,8 @@
                 <md-list>
                     <md-list-item>
                         <h3 md-line>{{ item.position | translate:lang }}</h3>
-                        <p md-line>{{ item.salary | localeCurrency:defaultLocale:currency:true:'1.0-0' }}</p>
-                        <p md-line>{{ item.startDate | localeDate:defaultLocale:'mediumDate' }}</p>
+                        <p md-line>{{ item.salary | l10nCurrency:defaultLocale:currency:'symbol':'1.0-0' }}</p>
+                        <p md-line>{{ item.startDate | l10nDate:defaultLocale:'mediumDate' }}</p>
                     </md-list-item>
                 </md-list>
             </md-card-content>
