@@ -8,9 +8,9 @@
             <md-card-content>
                 <md-list>
                     <md-list-item>
-                        <h3 md-line>{{ item.position | translate:lang }}</h3>
-                        <p md-line>{{ item.salary | l10nCurrency:defaultLocale:currency:'symbol':'1.0-0' }}</p>
-                        <p md-line>{{ item.startDate | l10nDate:defaultLocale:'mediumDate' }}</p>
+                        <h3 mdLine>{{ item.position | translate:lang }}</h3>
+                        <p mdLine>{{ item.salary | l10nCurrency:defaultLocale:currency:'symbol':'1.0-0' }}</p>
+                        <p mdLine>{{ item.startDate | l10nDate:defaultLocale:'mediumDate' }}</p>
                     </md-list-item>
                 </md-list>
             </md-card-content>
@@ -21,9 +21,9 @@
         <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'asc')" [disabled]="order == 'asc'">{{ 'Order by position' | translate:lang }}</button><br>
         <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'desc')" [disabled]="order == 'desc'">{{ 'Order by desc position' | translate:lang }}</button><br>
 
-        <md-input-container>
+        <md-form-field>
             <input mdInput [(ngModel)]="s" placeholder="{{ 'Search by position' | translate:lang }}" (keyup)="filterData(keyName, order)">
-        </md-input-container>
+        </md-form-field>
     </div>
 
 </div>

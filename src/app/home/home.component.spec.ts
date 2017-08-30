@@ -1,8 +1,7 @@
 import { HomeComponent } from './home.component';
 
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '@angular/material';
+import { SharedModule } from '../shared/shared.module';
 
 import {
     L10nConfig,
@@ -43,8 +42,7 @@ describe('Component: HomeComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                MaterialModule,
-                HttpClientModule,
+                SharedModule,
                 LocalizationModule.forRoot(l10nConfig)
             ],
             declarations: [HomeComponent]
