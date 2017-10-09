@@ -2,35 +2,35 @@
 
 <div class="i18n-card-container">
 
-    <md-card>
-        <md-card-title>{{ 'I18n.Gender' | translate:lang }}</md-card-title>
-        <md-card-content>
-            <md-radio-button name="gender" ref-female value="female" (click)="gender = female.value">{{ 'I18n.female' | translate:lang }}</md-radio-button>
-            <md-radio-button name="gender" ref-male value="male" (click)="gender = male.value">{{ 'I18n.male' | translate:lang }}</md-radio-button>
+    <mat-card>
+        <mat-card-title>{{ 'I18n.Gender' | translate:lang }}</mat-card-title>
+        <mat-card-content>
+            <mat-radio-button name="gender" ref-female value="female" (click)="gender = female.value">{{ 'I18n.female' | translate:lang }}</mat-radio-button>
+            <mat-radio-button name="gender" ref-male value="male" (click)="gender = male.value">{{ 'I18n.male' | translate:lang }}</mat-radio-button>
             <br>
             <br>
             <p *ngIf="gender != ''">{{ gender | i18nSelect:inviteMapping | translate:lang }}</p>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
-    <md-card>
-        <md-card-title>{{ 'I18n.Plural' | translate:lang }}</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title>{{ 'I18n.Plural' | translate:lang }}</mat-card-title>
+        <mat-card-content>
             <form #i18nForm="ngForm" (ngSubmit)="addMessage()" novalidate>
-                <md-form-field class="full-width">
-                    <textarea mdInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required></textarea>
-                    <md-error>
+                <mat-form-field class="full-width">
+                    <textarea matInput [(ngModel)]="message" name="message" placeholder="{{ 'I18n.Add message' | translate:lang }}" required></textarea>
+                    <mat-error>
                         {{ 'I18n.Message is required' | translate:lang }}
-                    </md-error>
-                </md-form-field>
+                    </mat-error>
+                </mat-form-field>
                 <br>
                 <br>
-                <button type="submit" md-raised-button color="primary" [disabled]="!i18nForm.form.valid">{{ 'I18n.Add' | translate:lang }}</button>
+                <button type="submit" mat-raised-button color="primary" [disabled]="!i18nForm.form.valid">{{ 'I18n.Add' | translate:lang }}</button>
                 <br>
                 <br>
                 <p>{{ messages.length | i18nPlural:messageMapping | translate:lang }}</p>
             </form>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
 </div>

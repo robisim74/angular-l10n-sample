@@ -3,27 +3,27 @@
 <div class="list-main-container">
 
     <div class="list-card-container">
-        <md-card *ngFor="let item of DATA | async">
-            <md-card-title>{{ item.name }}</md-card-title>
-            <md-card-content>
-                <md-list>
-                    <md-list-item>
-                        <h3 mdLine>{{ item.position | translate:lang }}</h3>
-                        <p mdLine>{{ item.salary | l10nCurrency:defaultLocale:currency:'symbol':'1.0-0' }}</p>
-                        <p mdLine>{{ item.startDate | l10nDate:defaultLocale:'mediumDate' }}</p>
-                    </md-list-item>
-                </md-list>
-            </md-card-content>
-        </md-card>
+        <mat-card *ngFor="let item of DATA | async">
+            <mat-card-title>{{ item.name }}</mat-card-title>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                        <h3 matLine>{{ item.position | translate:lang }}</h3>
+                        <p matLine>{{ item.salary | l10nCurrency:defaultLocale:currency:'symbol':'1.0-0' }}</p>
+                        <p matLine>{{ item.startDate | l10nDate:defaultLocale:'mediumatate' }}</p>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
     </div>
 
     <div class="list-aside-container" *ngIf="intlAPI">
-        <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'asc')" [disabled]="order == 'asc'">{{ 'Order by position' | translate:lang }}</button><br>
-        <button type="submit" md-raised-button color="primary" (click)="filterData('position', 'desc')" [disabled]="order == 'desc'">{{ 'Order by desc position' | translate:lang }}</button><br>
+        <button type="submit" mat-raised-button color="primary" (click)="filterData('position', 'asc')" [disabled]="order == 'asc'">{{ 'Order by position' | translate:lang }}</button><br>
+        <button type="submit" mat-raised-button color="primary" (click)="filterData('position', 'desc')" [disabled]="order == 'desc'">{{ 'Order by desc position' | translate:lang }}</button><br>
 
-        <md-form-field>
-            <input mdInput [(ngModel)]="s" placeholder="{{ 'Search by position' | translate:lang }}" (keyup)="filterData(keyName, order)">
-        </md-form-field>
+        <mat-form-field>
+            <input matInput [(ngModel)]="s" placeholder="{{ 'Search by position' | translate:lang }}" (keyup)="filterData(keyName, order)">
+        </mat-form-field>
     </div>
 
 </div>

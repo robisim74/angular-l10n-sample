@@ -1,30 +1,32 @@
 import { NgModule } from '@angular/core';
 import {
-    MdSidenavModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdListModule,
-    MdInputModule,
-    MdButtonModule,
-    MdRadioModule,
-    MdIconModule,
-    MdMenuModule,
-    MdDatepickerModule,
-    MdNativeDateModule
-} from '@angular/material';
+    MatSidenavModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatListModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatIconModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatDialogModule
+} from '@angular/Material';
 
 const materialModules: any[] = [
-    MdSidenavModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdListModule,
-    MdInputModule,
-    MdButtonModule,
-    MdRadioModule,
-    MdIconModule,
-    MdMenuModule,
-    MdDatepickerModule,
-    MdNativeDateModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatListModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatIconModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatDialogModule
 ];
 
 @NgModule({

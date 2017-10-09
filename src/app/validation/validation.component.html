@@ -2,15 +2,15 @@
 
 <div class="validation-card-container">
 
-    <md-card>
-        <md-card-title>{{ 'Validation.Dates' | translate:lang }}</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title>{{ 'Validation.Dates' | translate:lang }}</mat-card-title>
+        <mat-card-content>
             <form #dateForm="ngForm" (ngSubmit)="onDateSubmit()" novalidate>
-                <md-form-field class="full-width">
-                    <input mdInput [(ngModel)]="model.date" name="date" #date="ngModel" placeholder="{{ 'Validation.Choose a date' | translate:lang }}"
-                        [mdDatepicker]="picker" [min]="minDate" [max]="maxDate" required readonly>
-                    <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-                    <md-error>
+                <mat-form-field class="full-width">
+                    <input matInput [(ngModel)]="model.date" name="date" #date="ngModel" placeholder="{{ 'Validation.Choose a date' | translate:lang }}"
+                        [matDatepicker]="picker" [min]="minDate" [max]="maxDate" required readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-error>
                         <div *ngIf="date.hasError('required'); then thenBlock else elseBlock"></div>
                         <ng-template #thenBlock>
                             {{ 'Validation.Date is required' | translate:lang }}
@@ -18,47 +18,47 @@
                         <ng-template #elseBlock>
                             {{ 'Validation.Date is invalid' | translate:lang }}
                         </ng-template>
-                    </md-error>
-                    <md-datepicker #picker></md-datepicker>
-                </md-form-field>
+                    </mat-error>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
                 <br>
                 <br>
-                <button type="submit" md-raised-button color="primary" [disabled]="!dateForm.form.valid">{{ 'Validation.Submit' | translate:lang }}</button>
+                <button type="submit" mat-raised-button color="primary" [disabled]="!dateForm.form.valid">{{ 'Validation.Submit' | translate:lang }}</button>
                 <br>
                 <br>
                 <p>{{ 'Validation.Date value' | translate:lang:{ parsedDate: parsedDate || "" } }}</p>
             </form>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
-    <md-card>
-        <md-card-title>{{ 'Validation.Numbers' | translate:lang }}</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title>{{ 'Validation.Numbers' | translate:lang }}</mat-card-title>
+        <mat-card-content>
             <form #numberForm="ngForm" (ngSubmit)="onNumberSubmit()" novalidate>
-                <md-form-field class="full-width">
-                    <input mdInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 1000 | l10nDecimal:defaultLocale:digits }}"
+                <mat-form-field class="full-width">
+                    <input matInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 1000 | l10nDecimal:defaultLocale:digits }}"
                         [l10nValidateNumber]="digits" [minValue]="minValue" [maxValue]="maxValue" required (keyup)="decimal.valid ? parsedValue : parsedValue = null">
-                    <md-error *ngIf="decimal.hasError('required')">
+                    <mat-error *ngIf="decimal.hasError('required')">
                         {{ 'Validation.Number is required' | translate:lang }}
-                    </md-error>
-                    <md-error *ngIf="decimal.hasError('format')">
+                    </mat-error>
+                    <mat-error *ngIf="decimal.hasError('format')">
                         {{ 'Validation.Number is invalid' | translate:lang:{ format: 1000 | l10nDecimal:defaultLocale:digits } }}
-                    </md-error>
-                    <md-error *ngIf="decimal.hasError('minValue')">
+                    </mat-error>
+                    <mat-error *ngIf="decimal.hasError('minValue')">
                         {{ 'Validation.Min value error' | translate:lang:{ minValue: minValue | l10nDecimal:defaultLocale:digits } }}
-                    </md-error>
-                    <md-error *ngIf="decimal.hasError('maxValue')">
+                    </mat-error>
+                    <mat-error *ngIf="decimal.hasError('maxValue')">
                         {{ 'Validation.Max value error' | translate:lang:{ maxValue: maxValue | l10nDecimal:defaultLocale:digits } }}
-                    </md-error>
-                </md-form-field>
+                    </mat-error>
+                </mat-form-field>
                 <br>
                 <br>
-                <button type="submit" md-raised-button color="primary" [disabled]="!numberForm.form.valid">{{ 'Validation.Submit' | translate:lang }}</button>
+                <button type="submit" mat-raised-button color="primary" [disabled]="!numberForm.form.valid">{{ 'Validation.Submit' | translate:lang }}</button>
                 <br>
                 <br>
                 <p>{{ 'Validation.Number value' | translate:lang:{ parsedValue: parsedValue || "" } }}</p>
             </form>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
 </div>

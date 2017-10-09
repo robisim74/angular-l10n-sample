@@ -6,24 +6,24 @@
 
 <div class="home-card-container">
 
-    <md-card>
-        <md-card-title l10nTranslate>Home.Messages</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title l10nTranslate>Home.Messages</mat-card-title>
+        <mat-card-content>
             <p l10nTranslate>Home.Dummy text</p>
             <p l10nTranslate>Home.Author<span>&nbsp;</span><em l10nTranslate>Home.Source title</em></p>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
-    <md-card>
-        <md-card-title l10nTranslate>Home.Dates</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title l10nTranslate>Home.Dates</mat-card-title>
+        <mat-card-content>
             <p l10nDate="fullDate">{{ today }}</p>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
-    <md-card>
-        <md-card-title l10nTranslate>Home.Numbers</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title l10nTranslate>Home.Numbers</mat-card-title>
+        <mat-card-content>
             <h3 l10nTranslate>Home.Decimals</h3>
             <p l10nTranslate>Home.Pi<span>&nbsp;</span><span l10nDecimal="1.5-5">{{ pi }}</span></p>
             <br>
@@ -32,7 +32,7 @@
             <br>
             <h3 l10nTranslate>Home.Currencies</h3>
             <p l10nCurrency="1.2-2" [currencyDisplay]="'symbol'">{{ b }}</p>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
 </div>

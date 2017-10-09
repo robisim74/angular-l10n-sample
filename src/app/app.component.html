@@ -1,56 +1,56 @@
-<md-sidenav-container class="app-root" #root="dir" [dir]="dir" fullscreen>
+<mat-sidenav-container class="app-root" #root="dir" [dir]="dir" fullscreen>
 
-    <md-sidenav #start mode="over">
-        <md-nav-list>
-            <a *ngFor="let navItem of navItems" md-list-item routerLinkActive="active-link" (click)="start.close()" [routerLink]="[navItem.route]"
+    <mat-sidenav #start mode="over">
+        <mat-nav-list>
+            <a *ngFor="let navItem of navItems" mat-list-item routerLinkActive="active-link" (click)="start.close()" [routerLink]="[navItem.route]"
                 l10nTranslate>
                 {{ navItem.name }}
             </a>
-        </md-nav-list>
-    </md-sidenav>
+        </mat-nav-list>
+    </mat-sidenav>
 
     <div>
-        <md-toolbar color="primary" class="mat-elevation-z6">
-            <button md-icon-button (click)="start.open()">
-                <md-icon>menu</md-icon>
+        <mat-toolbar color="primary" class="mat-elevation-z6">
+            <button mat-icon-button (click)="start.open()">
+                <mat-icon>menu</mat-icon>
             </button>
             <div class="app-toolbar">
                 <h1 l10nTranslate>App.Title</h1>
 
                 <span class="fill-remaining-space"></span>
                 <div class="menu-section">
-                    <button md-icon-button [mdMenuTriggerFor]="countryMenu" aria-label="Open x-positioned menu">
-                        <md-icon>translate</md-icon>
+                    <button mat-icon-button [matMenuTriggerFor]="countryMenu" aria-label="Open x-positioned menu">
+                        <mat-icon>translate</mat-icon>
                     </button>
 
-                    <md-menu xPosition="before" #countryMenu="mdMenu" class="before">
+                    <mat-menu xPosition="before" #countryMenu="matMenu" class="before">
                         <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.currency); root.dir = getLanguageDirection(item.language)"
-                            md-menu-item>
+                            mat-menu-item>
                             {{ item.text }}
-                            <md-icon *ngIf="currentCountry == item.country">done</md-icon>
+                            <mat-icon *ngIf="currentCountry == item.country">done</mat-icon>
                         </a>
-                    </md-menu>
+                    </mat-menu>
                 </div>
                 <div class="menu-section">
-                    <button md-icon-button [mdMenuTriggerFor]="posXMenu" aria-label="Open x-positioned menu">
-                        <md-icon>more_vert</md-icon>
+                    <button mat-icon-button [matMenuTriggerFor]="posXMenu" aria-label="Open x-positioned menu">
+                        <mat-icon>more_vert</mat-icon>
                     </button>
 
-                    <md-menu xPosition="before" #posXMenu="mdMenu" class="before">
-                        <a href="https://github.com/robisim74/angular-l10n-sample" md-menu-item l10nTranslate>
-                            <md-icon>code</md-icon>App.Source code
+                    <mat-menu xPosition="before" #posXMenu="matMenu" class="before">
+                        <a href="https://github.com/robisim74/angular-l10n-sample" mat-menu-item l10nTranslate>
+                            <mat-icon>code</mat-icon>App.Source code
                         </a>
-                    </md-menu>
+                    </mat-menu>
                 </div>
             </div>
-            <md-toolbar-row class="app-toolbar-row">
+            <mat-toolbar-row class="app-toolbar-row">
                 <span l10nTranslate>App.Subtitle</span>
-            </md-toolbar-row>
-        </md-toolbar>
+            </mat-toolbar-row>
+        </mat-toolbar>
 
         <div class="app-content">
             <router-outlet></router-outlet>
         </div>
     </div>
 
-</md-sidenav-container>
+</mat-sidenav-container>

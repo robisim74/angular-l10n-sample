@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter, NativeDateAdapter } from '@angular/material';
 import { ISubscription } from 'rxjs/Subscription';
 
 import {
@@ -35,7 +35,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
     constructor(
         public locale: LocaleService,
         private localeValidation: LocaleValidation,
-        private dateAdapter: DateAdapter<Date>
+        private dateAdapter: DateAdapter<NativeDateAdapter>
     ) { }
 
     ngOnInit(): void {

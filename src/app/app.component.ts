@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Direction } from '@angular/material';
+import { Direction } from '@angular/cdk/bidi';
 import { ISubscription } from 'rxjs/Subscription';
 
 import { LocaleService, TranslationService } from 'angular-l10n';
