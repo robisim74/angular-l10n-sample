@@ -12,7 +12,7 @@ import {
     MatNativeDateModule,
     MatDatepickerModule,
     MatDialogModule
-} from '@angular/Material';
+} from '@angular/material';
 
 const materialModules: any[] = [
     MatSidenavModule,

@@ -16,8 +16,6 @@
     },
     "angularCompilerOptions": {
         "entryModule": "./src/app/app.module#AppModule",
-        "annotationsAs": "decorators",
-        "genDir": ".",
         "skipMetadataEmit": true
     }
 }

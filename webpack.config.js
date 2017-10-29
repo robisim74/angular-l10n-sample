@@ -95,10 +95,9 @@ if (!isProd) {
         module: {
             rules: [
                 {
-                    test: /\.ts$/,
+                    test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                     use: [
-                        '@ngtools/webpack',
-                        'source-map-loader'
+                        '@ngtools/webpack'
                     ]
                 },
                 {
@@ -127,8 +126,8 @@ if (!isProd) {
         },
 
         plugins: [
-            // AoT plugin.
-            new ngToolsWebpack.AotPlugin({
+            // AngularCompilerPlugin.
+            new ngToolsWebpack.AngularCompilerPlugin({
                 tsConfigPath: './tsconfig-aot.json'
             }),
             // Minimizes the bundle.
