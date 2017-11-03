@@ -6,9 +6,9 @@
     "scripts": {
         "serve": "http-server",
         "start": "webpack-dev-server --hot --inline",
-        "build": "node build.js && npm run serve",
+        "build": "cross-env NODE_ENV=production webpack && npm run serve",
         "test": "karma start",
-        "explore": "source-map-explorer dist/app-aot.bundle.js dist/app-aot.bundle.js.map"
+        "lint": "tslint -c tslint.json -t stylish src/**/*.ts -e src/main-aot.ts"
     },
     "keywords": [
         "angular",
@@ -60,7 +60,6 @@
         "angular-router-loader": "0.6.0",
         "angular2-template-loader": "0.6.2",
         "awesome-typescript-loader": "3.3.0",
-        "chalk": "2.3.0",
         "codelyzer": "4.0.0",
         "cross-env": "5.1.1",
         "css-loader": "0.28.7",
@@ -78,8 +77,6 @@
         "node-sass": "4.5.3",
         "raw-loader": "0.5.1",
         "sass-loader": "6.0.6",
-        "shelljs": "0.7.8",
-        "source-map-explorer": "1.5.0",
         "source-map-loader": "0.2.3",
         "style-loader": "0.19.0",
         "tslint": "5.8.0",

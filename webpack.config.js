@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
+const rxPaths = require('rxjs/_esm5/path-mapping');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -58,6 +59,7 @@ if (!isProd) {
         },
 
         plugins: [
+            new webpack.optimize.ModuleConcatenationPlugin(),
             // Adds script for the bundle in index.html.
             new HtmlWebpackPlugin({
                 filename: 'index.html',
@@ -67,7 +69,8 @@ if (!isProd) {
         ],
 
         resolve: {
-            extensions: ['.ts', '.js']
+            extensions: ['.ts', '.js'],
+            alias: rxPaths()
         },
 
         devtool: 'source-map',
@@ -130,6 +133,7 @@ if (!isProd) {
             new ngToolsWebpack.AngularCompilerPlugin({
                 tsConfigPath: './tsconfig-aot.json'
             }),
+            new webpack.optimize.ModuleConcatenationPlugin(),
             // Minimizes the bundle.
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
@@ -138,7 +142,7 @@ if (!isProd) {
                 output: {
                     comments: false
                 },
-                sourceMap: true
+                sourceMap: false
             }),
             // Adds script for the bundle in index.html.
             new HtmlWebpackPlugin({
@@ -149,10 +153,11 @@ if (!isProd) {
         ],
 
         resolve: {
-            extensions: ['.ts', '.js']
+            extensions: ['.ts', '.js'],
+            alias: rxPaths()
         },
 
-        devtool: 'source-map',
+        devtool: false,
 
         performance: { hints: false }
 

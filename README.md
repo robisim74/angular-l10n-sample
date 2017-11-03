@@ -21,11 +21,6 @@ Make the changes: the browser will update without refreshing.
 npm run build
 ```
 
-Analyzing the bundle:
-```Shell
-npm run explore
-```
-
 Running the sample test:
 ```Shell
 npm test
