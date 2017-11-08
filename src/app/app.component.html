@@ -11,38 +11,40 @@
 
     <div>
         <mat-toolbar color="primary" class="mat-elevation-z6">
-            <button mat-icon-button (click)="start.open()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <div class="app-toolbar">
-                <h1 l10nTranslate>App.Title</h1>
+            <mat-toolbar-row>
+                <button mat-icon-button (click)="start.open()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <div class="app-toolbar">
+                    <h1 l10nTranslate>App.Title</h1>
 
-                <span class="fill-remaining-space"></span>
-                <div class="menu-section">
-                    <button mat-icon-button [matMenuTriggerFor]="countryMenu" aria-label="Open x-positioned menu">
-                        <mat-icon>translate</mat-icon>
-                    </button>
+                    <span class="fill-remaining-space"></span>
+                    <div class="menu-section">
+                        <button mat-icon-button [matMenuTriggerFor]="countryMenu" aria-label="Open x-positioned menu">
+                            <mat-icon>translate</mat-icon>
+                        </button>
 
-                    <mat-menu xPosition="before" #countryMenu="matMenu" class="before">
-                        <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.currency); root.dir = getLanguageDirection(item.language)"
-                            mat-menu-item>
-                            {{ item.text }}
-                            <mat-icon *ngIf="currentCountry == item.country">done</mat-icon>
-                        </a>
-                    </mat-menu>
+                        <mat-menu xPosition="before" #countryMenu="matMenu" class="before">
+                            <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.currency); root.dir = getLanguageDirection(item.language)"
+                                mat-menu-item>
+                                {{ item.text }}
+                                <mat-icon *ngIf="currentCountry == item.country">done</mat-icon>
+                            </a>
+                        </mat-menu>
+                    </div>
+                    <div class="menu-section">
+                        <button mat-icon-button [matMenuTriggerFor]="posXMenu" aria-label="Open x-positioned menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+
+                        <mat-menu xPosition="before" #posXMenu="matMenu" class="before">
+                            <a href="https://github.com/robisim74/angular-l10n-sample" mat-menu-item l10nTranslate>
+                                <mat-icon>code</mat-icon>App.Source code
+                            </a>
+                        </mat-menu>
+                    </div>
                 </div>
-                <div class="menu-section">
-                    <button mat-icon-button [matMenuTriggerFor]="posXMenu" aria-label="Open x-positioned menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-
-                    <mat-menu xPosition="before" #posXMenu="matMenu" class="before">
-                        <a href="https://github.com/robisim74/angular-l10n-sample" mat-menu-item l10nTranslate>
-                            <mat-icon>code</mat-icon>App.Source code
-                        </a>
-                    </mat-menu>
-                </div>
-            </div>
+            </mat-toolbar-row>
             <mat-toolbar-row class="app-toolbar-row">
                 <span l10nTranslate>App.Subtitle</span>
             </mat-toolbar-row>
