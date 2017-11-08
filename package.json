@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --aot --hmr -e=hmr",
     "build": "ng build --prod",
-    "build:gh-pages": "ng build --prod --output-path docs --base-href angular-l10n-sample",
+    "build:gh-pages": "ng build --prod --output-path docs --base-href https://robisim74.github.io/angular-l10n-sample/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
