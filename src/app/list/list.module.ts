@@ -14,9 +14,9 @@ import {
 const l10nConfig: L10nConfig = {
     translation: {
         providers: [
-            { type: ProviderType.Static, prefix: './src/assets/locale-' },
-            { type: ProviderType.Static, prefix: './src/assets/locale-list-' },
-            { type: ProviderType.Static, prefix: './src/assets/locale-position-' }
+            { type: ProviderType.Static, prefix: './assets/locale-' },
+            { type: ProviderType.Static, prefix: './assets/locale-list-' },
+            { type: ProviderType.Static, prefix: './assets/locale-position-' }
         ],
         composedKeySeparator: '.',
         missingValue: 'No key'

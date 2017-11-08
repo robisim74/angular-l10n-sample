@@ -11,7 +11,17 @@ import {
     Currency
 } from 'angular-l10n';
 
+export class Data {
+
+    name: string;
+    position: string;
+    salary: number;
+    startDate: Date;
+
+}
+
 @Component({
+    selector: 'app-list',
     templateUrl: 'list.component.html',
     styleUrls: ['./list.component.scss'],
     providers: [Collator]
@@ -128,14 +138,5 @@ export class ListComponent implements OnInit, OnDestroy {
 
         return DATA;
     }
-
-}
-
-export class Data {
-
-    name: string;
-    position: string;
-    salary: number;
-    startDate: Date;
 
 }

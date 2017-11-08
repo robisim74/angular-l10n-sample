@@ -33,7 +33,7 @@ const l10nConfig: L10nConfig = {
     },
     translation: {
         providers: [
-            { type: ProviderType.Static, prefix: './src/assets/locale-' }
+            { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
         composedKeySeparator: '.',

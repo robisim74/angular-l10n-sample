@@ -1,0 +1,52 @@
+{
+    "App": {
+        "Title": "Angular localization",
+        "Subtitle": "It's a small world",
+        "Home": "Home",
+        "I18n": "I18n",
+        "List": "List",
+        "Validation": "Validation",
+        "Source code": "Source code"
+    },
+    "Home": {
+        "Dummy text": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What's happened to me?\" he thought. It wasn't a dream.",
+        "Author": "Kafka",
+        "Source title": "The Metamorphosis",
+        "Messages": "Messages",
+        "Dates": "Dates",
+        "Numbers": "Numbers",
+        "Decimals": "Decimals",
+        "Pi": "Pi:",
+        "Percentages": "Percentages",
+        "Currencies": "Currencies",
+        "IntlAPI": "The browser does not support all the features of this app."
+    },
+    "I18n": {
+        "Gender": "Gender",
+        "Plural": "Plural",
+        "female": "female",
+        "male": "male",
+        "Invite her": "Invite her",
+        "Invite him": "Invite him",
+        "Add message": "Write a message",
+        "Add": "Add",
+        "Message is required": "Message is required",
+        "No messages": "No messages",
+        "One message": "One message",
+        "messages": "messages"
+    },
+    "Validation": {
+        "Numbers": "Numbers",
+        "Number is invalid": "Number is invalid. Required format: {{ format }}",
+        "Min value error": "Minimum value: {{ minValue }}",
+        "Max value error": "Maximum value: {{ maxValue }}",
+        "Number is required": "Number is required",
+        "Number value": "Number value: {{ parsedValue }}",
+        "Submit": "Submit",
+        "Dates": "Dates",
+        "Choose a date": "Choose a date",
+        "Date is invalid": "Date is invalid",
+        "Date is required": "Date is required",
+        "Date value": "Date: {{ parsedDate }}"
+    }
+}

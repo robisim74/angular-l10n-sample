@@ -10,6 +10,7 @@ import {
 } from 'angular-l10n';
 
 @Component({
+    selector: 'app-validation',
     templateUrl: 'validation.component.html',
     styleUrls: ['./validation.component.scss']
 })

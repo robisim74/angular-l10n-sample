@@ -6,7 +6,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { LocaleService, TranslationService } from 'angular-l10n';
 
 @Component({
-    selector: 'app-component',
+    selector: 'app-root',
     templateUrl: './app.component.html'
 })
 /**

@@ -60,7 +60,7 @@ describe('Component: HomeComponent', () => {
     it('should render translated text', (() => {
         fixture.detectChanges();
 
-        expect(fixture.debugElement.nativeElement).toContainText('The Metamorphosis');
+        expect(fixture.debugElement.nativeElement.textContent).toContain('The Metamorphosis');
     }));
 
 });
