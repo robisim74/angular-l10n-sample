@@ -10,14 +10,17 @@
         <mat-card-title l10nTranslate>Home.Messages</mat-card-title>
         <mat-card-content>
             <p l10nTranslate>Home.Dummy text</p>
-            <p l10nTranslate>Home.Author<span>&nbsp;</span><em l10nTranslate>Home.Source title</em></p>
+            <p l10nTranslate>Home.Author
+                <span>&nbsp;</span>
+                <em l10nTranslate>Home.Source title</em>
+            </p>
         </mat-card-content>
     </mat-card>
 
     <mat-card>
         <mat-card-title l10nTranslate>Home.Dates</mat-card-title>
         <mat-card-content>
-            <p l10nDate="fullDate">{{ today }}</p>
+            <p format="fullDate" l10nDate>{{ today }}</p>
         </mat-card-content>
     </mat-card>
 
@@ -25,13 +28,16 @@
         <mat-card-title l10nTranslate>Home.Numbers</mat-card-title>
         <mat-card-content>
             <h3 l10nTranslate>Home.Decimals</h3>
-            <p l10nTranslate>Home.Pi<span>&nbsp;</span><span l10nDecimal="1.5-5">{{ pi }}</span></p>
+            <p l10nTranslate>Home.Pi
+                <span>&nbsp;</span>
+                <span digits="1.5-5" l10nDecimal>{{ pi }}</span>
+            </p>
             <br>
             <h3 l10nTranslate>Home.Percentages</h3>
-            <p l10nPercent="1.0-0">{{ a }} </p>
+            <p digits="1.0-0" l10nPercent>{{ a }} </p>
             <br>
             <h3 l10nTranslate>Home.Currencies</h3>
-            <p l10nCurrency="1.2-2" [currencyDisplay]="'symbol'">{{ b }}</p>
+            <p digits="1.2-2" currencyDisplay="symbol" l10nCurrency>{{ b }}</p>
         </mat-card-content>
     </mat-card>
 

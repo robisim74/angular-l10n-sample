@@ -37,7 +37,8 @@
             <form #numberForm="ngForm" (ngSubmit)="onNumberSubmit()" novalidate>
                 <mat-form-field class="full-width">
                     <input matInput [(ngModel)]="model.decimal" name="decimal" #decimal="ngModel" placeholder="{{ 1000 | l10nDecimal:defaultLocale:digits }}"
-                        [l10nValidateNumber]="digits" [minValue]="minValue" [maxValue]="maxValue" required (keyup)="decimal.valid ? parsedValue : parsedValue = null">
+                        [digits]="digits" [minValue]="minValue" [maxValue]="maxValue" required (keyup)="decimal.valid ? parsedValue : parsedValue = null"
+                        l10nValidateNumber>
                     <mat-error *ngIf="decimal.hasError('required')">
                         {{ 'Validation.Number is required' | translate:lang }}
                     </mat-error>
