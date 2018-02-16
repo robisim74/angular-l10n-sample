@@ -23,14 +23,19 @@ export class AppComponent implements OnInit, OnDestroy {
     ];
 
     countryMenuItems: any[] = [
-        { text: 'United States', language: 'en', country: 'US', currency: 'USD' },
-        { text: 'United Kingdom', language: 'en', country: 'GB', currency: 'GBP' },
-        { text: 'Italia', language: 'it', country: 'IT', currency: 'EUR' },
-        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', currency: 'SAR' }
+        { text: 'United States', language: 'en', country: 'US', currency: 'USD', numberingSystem: 'latn' },
+        { text: 'United Kingdom', language: 'en', country: 'GB', currency: 'GBP', numberingSystem: 'latn' },
+        { text: 'Italia', language: 'it', country: 'IT', currency: 'EUR', numberingSystem: 'latn' },
+        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', currency: 'SAR', numberingSystem: 'arab' },
+        { text: 'المملكة العربية السعودية - Arabic', language: 'ar', country: 'SA', currency: 'SAR', numberingSystem: 'latn' }
     ];
 
     get currentCountry(): string {
         return this.locale.getCurrentCountry();
+    }
+
+    get currentNumberingSystem(): string {
+        return this.locale.getCurrentNumberingSystem();
     }
 
     dir: Direction;
@@ -57,8 +62,8 @@ export class AppComponent implements OnInit, OnDestroy {
         return this.locale.getLanguageDirection(language) as Direction;
     }
 
-    selectLocale(language: string, country: string, currency: string): void {
-        this.locale.setDefaultLocale(language, country);
+    selectLocale(language: string, country: string, currency: string, numberingSystem: string): void {
+        this.locale.setDefaultLocale(language, country, '', numberingSystem);
         this.locale.setCurrentCurrency(currency);
     }
 
