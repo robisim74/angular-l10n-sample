@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DateAdapter, NativeDateAdapter } from '@angular/material';
-import { ISubscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import {
     LocaleService,
@@ -31,7 +31,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
     parsedDate: Date | null = null;
     parsedValue: number | null = null;
 
-    subscription: ISubscription;
+    subscription: Subscription;
 
     constructor(
         public locale: LocaleService,

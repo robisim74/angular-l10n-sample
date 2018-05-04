@@ -26,7 +26,7 @@ const l10nConfig: L10nConfig = {
             { code: 'it', dir: 'ltr' },
             { code: 'ar', dir: 'rtl' }
         ],
-        defaultLocale: { languageCode: 'en', countryCode: 'US' },
+        defaultLocale: { languageCode: 'en', countryCode: 'US', numberingSystem: 'latn' },
         currency: 'USD',
         storage: StorageStrategy.Cookie,
         cookieExpiration: 30

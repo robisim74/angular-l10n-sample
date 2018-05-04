@@ -5,5 +5,9 @@
 	mat-card {
 		margin: 8px;
 		width: 350px;
+
+		.mat-radio-button {
+			margin-right: 10px;
+		}
 	}
 }

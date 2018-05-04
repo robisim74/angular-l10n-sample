@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Direction } from '@angular/cdk/bidi';
-import { ISubscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { LocaleService, TranslationService } from 'angular-l10n';
 
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     dir: Direction;
 
-    subscription: ISubscription;
+    subscription: Subscription;
 
     constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) { }
 

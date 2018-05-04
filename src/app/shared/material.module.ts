@@ -11,7 +11,8 @@ import {
     MatMenuModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MATERIAL_SANITY_CHECKS
 } from '@angular/material';
 
 const materialModules: any[] = [
@@ -31,7 +32,13 @@ const materialModules: any[] = [
 
 @NgModule({
     imports: materialModules,
-    exports: materialModules
+    exports: materialModules,
+    providers: [
+        {
+            provide: MATERIAL_SANITY_CHECKS,
+            useValue: false
+        }
+    ]
 })
 
 export class MaterialModule { }
