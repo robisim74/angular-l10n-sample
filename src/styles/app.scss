@@ -63,12 +63,10 @@ body {
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-left: 64px;
-            margin-right: 8px;
+            padding-left: 80px;
 
             @media ($xsmall) {
-                margin-left: 56px;
-                margin-right: 0px;
+                padding-left: 72px;
             }
 		}
     }
