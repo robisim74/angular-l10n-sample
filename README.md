@@ -3,7 +3,7 @@
 
 ## Installing
 - Requirements
-	- [Node.js and npm](https://docs.npmjs.com/getting-started/installing-node)
+	- [Node.js and npm](https://docs.npmjs.com/getting-started/installing-node#install-npm--manage-npm-versions)
     - At least [Angular CLI 6.0.0](https://github.com/angular/angular-cli)
 
 ## Running
