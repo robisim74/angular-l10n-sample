@@ -10,10 +10,8 @@
         <mat-card-title l10nTranslate>Home.Messages</mat-card-title>
         <mat-card-content>
             <p l10nTranslate>Home.Dummy text</p>
-            <p l10nTranslate>Home.Author
-                <span>&nbsp;</span>
-                <em l10nTranslate>Home.Source title</em>
-            </p>
+            <p l10nTranslate>Home.Author</p>
+            <p [innerHTML]="'Home.Source title'" l10nTranslate></p>
         </mat-card-content>
     </mat-card>
 
