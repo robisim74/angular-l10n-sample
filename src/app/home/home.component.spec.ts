@@ -11,8 +11,6 @@ import {
     ProviderType
 } from 'angular-l10n';
 
-import '../../styles.scss';
-
 describe('Component: HomeComponent', () => {
 
     let fixture: ComponentFixture<HomeComponent>;
@@ -31,15 +29,14 @@ describe('Component: HomeComponent', () => {
         },
         translation: {
             providers: [
-                // Karma serves files from 'base' relative path.
-                { type: ProviderType.Static, prefix: 'base/src/assets/locale-' }
+                { type: ProviderType.Static, prefix: '/assets/locale-' }
             ],
             composedKeySeparator: '.',
             missingValue: 'No key'
         }
     };
 
-    beforeEach(async () => {
+    beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
                 SharedModule,
@@ -50,7 +47,7 @@ describe('Component: HomeComponent', () => {
 
         fixture = TestBed.createComponent(HomeComponent);
         comp = fixture.componentInstance;
-    });
+    }));
 
     beforeEach((done: any) => {
         l10nLoader = TestBed.get(L10nLoader);

@@ -1,9 +1,11 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -11,9 +13,8 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "strictPropertyInitialization": false,
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
     ]
   }

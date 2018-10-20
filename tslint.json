@@ -11,9 +11,15 @@
       "check-space"
     ],
     "curly": true,
+    "deprecation": {
+      "severity": "warn"
+    },
     "eofline": true,
     "forin": true,
-    "import-blacklist": false,
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
     "import-spacing": true,
     "indent": [
       true,
@@ -55,11 +61,11 @@
     "no-eval": true,
     "no-inferrable-types": [
       true,
-      "ignore-params",
-      "ignore-properties"
+      "ignore-params"
     ],
     "no-misused-new": true,
     "no-non-null-assertion": true,
+    "no-redundant-jsdoc": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -79,7 +85,8 @@
     ],
     "prefer-const": true,
     "quotemark": [
-      false
+      true,
+      "single"
     ],
     "radix": true,
     "semicolon": [
@@ -110,18 +117,7 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [
-      true,
-      "attribute",
-      "app",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ],
+    "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,

@@ -36,7 +36,7 @@ const l10nConfig: L10nConfig = {
             { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
-        version: '5.2',
+        version: '6',
         composedKeySeparator: '.',
         missingValue: 'No key',
         i18nPlural: true
