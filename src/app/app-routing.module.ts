@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'list', loadChildren: './list/list.module#ListModule'
     },
     { path: 'validation', component: ValidationComponent },
-    { path: '**', component: HomeComponent },
+    { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
