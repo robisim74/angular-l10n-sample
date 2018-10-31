@@ -24,3 +24,8 @@ npm run build
 ```Shell
 npm test
 ```
+
+#### Analyzing bundle
+```Shell
+npm run analyze
+```

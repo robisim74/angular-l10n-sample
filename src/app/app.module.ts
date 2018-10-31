@@ -16,7 +16,8 @@ import {
     LocalizationModule,
     LocaleValidationModule,
     StorageStrategy,
-    ProviderType
+    ProviderType,
+    ISOCode
 } from 'angular-l10n';
 
 const l10nConfig: L10nConfig = {
@@ -29,14 +30,15 @@ const l10nConfig: L10nConfig = {
         defaultLocale: { languageCode: 'en', countryCode: 'US', numberingSystem: 'latn' },
         currency: 'USD',
         storage: StorageStrategy.Cookie,
-        cookieExpiration: 30
+        cookieExpiration: 30,
+        localizedRouting: [ISOCode.Language, ISOCode.Country]
     },
     translation: {
         providers: [
             { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
-        version: '6',
+        version: '6.1.1',
         composedKeySeparator: '.',
         missingValue: 'No key',
         i18nPlural: true

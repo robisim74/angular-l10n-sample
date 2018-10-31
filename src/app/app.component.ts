@@ -52,6 +52,27 @@ export class AppComponent implements OnInit, OnDestroy {
 
         // Initializes direction.
         this.dir = this.getLanguageDirection();
+
+        // Initialzes numbering system & currency for localized routing.
+        const locale = this.locale.getCurrentLocale();
+        switch (locale) {
+            case 'en-US':
+                this.locale.setCurrentNumberingSystem('latn');
+                this.locale.setCurrentCurrency('USD');
+                break;
+            case 'en-GB':
+                this.locale.setCurrentNumberingSystem('latn');
+                this.locale.setCurrentCurrency('GBP');
+                break;
+            case 'it-IT':
+                this.locale.setCurrentNumberingSystem('latn');
+                this.locale.setCurrentCurrency('EUR');
+                break;
+            case 'ar-SA':
+                this.locale.setCurrentNumberingSystem('arab');
+                this.locale.setCurrentCurrency('SAR');
+                break;
+        }
     }
 
     ngOnDestroy(): void {
