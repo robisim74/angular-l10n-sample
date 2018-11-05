@@ -2,8 +2,8 @@
 
     <mat-sidenav #start mode="over">
         <mat-nav-list>
-            <a *ngFor="let navItem of navItems" mat-list-item routerLinkActive="active-link" (click)="start.close()" [routerLink]="[navItem.route]"
-                l10nTranslate>
+            <a *ngFor="let navItem of navItems" mat-list-item routerLinkActive="active-link" (click)="start.close()"
+                [routerLink]="[navItem.route]" l10nTranslate>
                 {{ navItem.name }}
             </a>
         </mat-nav-list>
@@ -25,7 +25,7 @@
                         </button>
 
                         <mat-menu xPosition="before" #countryMenu="matMenu" class="before">
-                            <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.currency, item.numberingSystem)"
+                            <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.numberingSystem)"
                                 mat-menu-item>
                                 {{ item.text }}
                                 <mat-icon *ngIf="currentCountry == item.country && currentNumberingSystem == item.numberingSystem">done</mat-icon>

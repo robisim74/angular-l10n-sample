@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Direction } from '@angular/cdk/bidi';
-import { Subscription } from 'rxjs';
 
 import { LocaleService, TranslationService } from 'angular-l10n';
 
@@ -13,7 +12,7 @@ import { LocaleService, TranslationService } from 'angular-l10n';
  * AppComponent class doesn't use decorators
  * because the view uses only directives and not the pipes to get the translation.
  */
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
     navItems: any[] = [
         { name: 'App.Home', route: 'home' },
@@ -23,11 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
     ];
 
     countryMenuItems: any[] = [
-        { text: 'United States', language: 'en', country: 'US', currency: 'USD', numberingSystem: 'latn' },
-        { text: 'United Kingdom', language: 'en', country: 'GB', currency: 'GBP', numberingSystem: 'latn' },
-        { text: 'Italia', language: 'it', country: 'IT', currency: 'EUR', numberingSystem: 'latn' },
-        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', currency: 'SAR', numberingSystem: 'arab' },
-        { text: 'المملكة العربية السعودية - Arabic', language: 'ar', country: 'SA', currency: 'SAR', numberingSystem: 'latn' }
+        { text: 'United States', language: 'en', country: 'US', numberingSystem: 'latn' },
+        { text: 'United Kingdom', language: 'en', country: 'GB', numberingSystem: 'latn' },
+        { text: 'Italia', language: 'it', country: 'IT', numberingSystem: 'latn' },
+        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', numberingSystem: 'arab' },
+        { text: 'المملكة العربية السعودية - Arabic', language: 'ar', country: 'SA', numberingSystem: 'latn' }
     ];
 
     get currentCountry(): string {
@@ -40,26 +39,53 @@ export class AppComponent implements OnInit, OnDestroy {
 
     dir: Direction;
 
-    subscription: Subscription;
-
     constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) { }
 
     ngOnInit(): void {
-        this.subscription = this.translation.translationChanged().subscribe(
+        this.translation.translationChanged().subscribe(
             () => {
                 this.title.setTitle(this.translation.translate('App.Title'));
                 this.dir = this.locale.getLanguageDirection() as Direction;
             }
         );
+
+        // Changes currency when default locale changes and for localized routing.
+        this.locale.defaultLocaleChanged.subscribe(() => {
+            switch (this.locale.getCurrentLocale()) {
+                case 'en-US':
+                    this.locale.setCurrentCurrency('USD');
+                    break;
+                case 'en-GB':
+                    this.locale.setCurrentCurrency('GBP');
+                    break;
+                case 'it-IT':
+                    this.locale.setCurrentCurrency('EUR');
+                    break;
+                case 'ar-SA':
+                    this.locale.setCurrentCurrency('SAR');
+                    break;
+            }
+        });
+
+        // Initialzes numbering system for localized routing.
+        switch (this.locale.getCurrentLocale()) {
+            case 'en-US':
+                this.locale.setCurrentNumberingSystem('latn');
+                break;
+            case 'en-GB':
+                this.locale.setCurrentNumberingSystem('latn');
+                break;
+            case 'it-IT':
+                this.locale.setCurrentNumberingSystem('latn');
+                break;
+            case 'ar-SA':
+                this.locale.setCurrentNumberingSystem('arab');
+                break;
+        }
     }
 
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-    }
-
-    selectLocale(language: string, country: string, currency: string, numberingSystem: string): void {
+    selectLocale(language: string, country: string, numberingSystem: string): void {
         this.locale.setDefaultLocale(language, country, '', numberingSystem);
-        this.locale.setCurrentCurrency(currency);
     }
 
 }
