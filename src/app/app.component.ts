@@ -45,21 +45,16 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) { }
 
     ngOnInit(): void {
-        // When the language changes, refreshes the document title with the new translation.
         this.subscription = this.translation.translationChanged().subscribe(
-            () => { this.title.setTitle(this.translation.translate('App.Title')); }
+            () => {
+                this.title.setTitle(this.translation.translate('App.Title'));
+                this.dir = this.locale.getLanguageDirection() as Direction;
+            }
         );
-
-        // Initializes direction.
-        this.dir = this.getLanguageDirection();
     }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
-    }
-
-    getLanguageDirection(language?: string): Direction {
-        return this.locale.getLanguageDirection(language) as Direction;
     }
 
     selectLocale(language: string, country: string, currency: string, numberingSystem: string): void {

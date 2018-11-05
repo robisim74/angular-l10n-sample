@@ -22,8 +22,7 @@ export class Data {
 @Component({
     selector: 'app-list',
     templateUrl: 'list.component.html',
-    styleUrls: ['./list.component.scss'],
-    providers: [Collator]
+    styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
 
@@ -46,8 +45,6 @@ export class ListComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.intlAPI = IntlAPI.hasCollator();
-
-        this.initializeFilters();
 
         // Reinitializes filters when language changes.
         this.subscription = this.translation.translationChanged().subscribe(

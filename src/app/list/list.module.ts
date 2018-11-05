@@ -8,6 +8,7 @@ import {
     L10nConfig,
     L10nLoader,
     LocalizationModule,
+    CollatorModule,
     ProviderType
 } from 'angular-l10n';
 
@@ -27,7 +28,8 @@ const l10nConfig: L10nConfig = {
     imports: [
         ListRoutingModule,
         SharedModule,
-        LocalizationModule.forChild(l10nConfig) // New instance of TranslationService.
+        LocalizationModule.forChild(l10nConfig), // New instance of TranslationService.
+        CollatorModule // New instance of Collator.
     ],
     declarations: [ListComponent]
 })
