@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 import {
@@ -22,7 +22,8 @@ export class Data {
 @Component({
     selector: 'app-list',
     templateUrl: 'list.component.html',
-    styleUrls: ['./list.component.scss']
+    styleUrls: ['./list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit, OnDestroy {
 
@@ -41,7 +42,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
     subscription: Subscription;
 
-    constructor(public translation: TranslationService, private collator: Collator) { }
+    // The injection of ChangeDetectorRef is necessary for OnPush change detection strategy.
+    constructor(public translation: TranslationService, private collator: Collator, private cdr: ChangeDetectorRef) { }
 
     ngOnInit(): void {
         this.intlAPI = IntlAPI.hasCollator();
