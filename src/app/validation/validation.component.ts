@@ -24,7 +24,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
     minDate: Date = new Date();
     maxDate: Date = new Date();
 
-    digits: string = "1.2-2";
+    digits = "1.2-2";
     minValue: number = -Math.round(Math.random() * 10000) / 100;
     maxValue: number = Math.round(Math.random() * 10000000) / 100;
 
