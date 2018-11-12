@@ -31,14 +31,17 @@ const l10nConfig: L10nConfig = {
         currency: 'USD',
         storage: StorageStrategy.Cookie,
         cookieExpiration: 30,
-        localizedRouting: [ISOCode.Language, ISOCode.Country]
+        localizedRouting: [ISOCode.Language, ISOCode.Country],
+        localizedRoutingOptions: {
+            defaultRouting: false
+        }
     },
     translation: {
         providers: [
             { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
-        version: '6.3.1',
+        version: '6.4.0',
         composedKeySeparator: '.',
         missingValue: 'No key',
         i18nPlural: true

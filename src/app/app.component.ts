@@ -49,24 +49,6 @@ export class AppComponent implements OnInit {
             }
         );
 
-        // Changes currency when default locale changes and for localized routing.
-        this.locale.defaultLocaleChanged.subscribe(() => {
-            switch (this.locale.getCurrentLocale()) {
-                case 'en-US':
-                    this.locale.setCurrentCurrency('USD');
-                    break;
-                case 'en-GB':
-                    this.locale.setCurrentCurrency('GBP');
-                    break;
-                case 'it-IT':
-                    this.locale.setCurrentCurrency('EUR');
-                    break;
-                case 'ar-SA':
-                    this.locale.setCurrentCurrency('SAR');
-                    break;
-            }
-        });
-
         // Initialzes numbering system for localized routing.
         switch (this.locale.getCurrentLocale()) {
             case 'en-US':
@@ -80,6 +62,30 @@ export class AppComponent implements OnInit {
                 break;
             case 'ar-SA':
                 this.locale.setCurrentNumberingSystem('arab');
+                break;
+        }
+        // Initializes currency for localized routing.
+        this.updateCurrency();
+
+        // Changes currency when default locale changes.
+        this.locale.defaultLocaleChanged.subscribe(() => {
+            this.updateCurrency();
+        });
+    }
+
+    updateCurrency(): void {
+        switch (this.locale.getCurrentLocale()) {
+            case 'en-US':
+                this.locale.setCurrentCurrency('USD');
+                break;
+            case 'en-GB':
+                this.locale.setCurrentCurrency('GBP');
+                break;
+            case 'it-IT':
+                this.locale.setCurrentCurrency('EUR');
+                break;
+            case 'ar-SA':
+                this.locale.setCurrentCurrency('SAR');
                 break;
         }
     }
