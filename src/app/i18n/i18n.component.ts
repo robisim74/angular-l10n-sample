@@ -22,8 +22,8 @@ export class I18nComponent implements OnInit {
 
     @Language() lang: string;
 
-    message: string = "";
-    gender: string = "";
+    message = "";
+    gender = "";
     inviteMapping: any = {
         male: 'I18n.Invite him',
         female: 'I18n.Invite her'

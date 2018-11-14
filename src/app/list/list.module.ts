@@ -6,7 +6,7 @@ import { ListComponent } from './list.component';
 
 import {
     L10nConfig,
-    TranslationService,
+    L10nLoader,
     LocalizationModule,
     CollatorModule,
     ProviderType
@@ -35,8 +35,8 @@ const l10nConfig: L10nConfig = {
 })
 export class ListModule {
 
-    constructor(public translation: TranslationService) {
-        this.translation.init();
+    constructor(public l10nLoader: L10nLoader) {
+        this.l10nLoader.load();
     }
 
 }

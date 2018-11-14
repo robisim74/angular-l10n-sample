@@ -33,7 +33,17 @@ const l10nConfig: L10nConfig = {
         cookieExpiration: 30,
         localizedRouting: [ISOCode.Language, ISOCode.Country],
         localizedRoutingOptions: {
-            defaultRouting: false
+            defaultRouting: false,
+            schema: [
+                { text: 'United States', languageCode: 'en', countryCode: 'US', numberingSystem: 'latn', currency: 'USD' },
+                { text: 'United Kingdom', languageCode: 'en', countryCode: 'GB', numberingSystem: 'latn', currency: 'GBP' },
+                { text: 'Italia', languageCode: 'it', countryCode: 'IT', numberingSystem: 'latn', currency: 'EUR' },
+                { text: 'المملكة العربية السعودية', languageCode: 'ar', countryCode: 'SA', numberingSystem: 'arab', currency: 'SAR' },
+                {
+                    text: 'المملكة العربية السعودية - Arabic',
+                    languageCode: 'ar', countryCode: 'SA', numberingSystem: 'latn', currency: 'SAR'
+                }
+            ]
         }
     },
     translation: {
@@ -41,7 +51,7 @@ const l10nConfig: L10nConfig = {
             { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
-        version: '6.4.0',
+        version: '6.5.0',
         composedKeySeparator: '.',
         missingValue: 'No key',
         i18nPlural: true

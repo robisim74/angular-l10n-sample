@@ -21,13 +21,7 @@ export class AppComponent implements OnInit {
         { name: 'App.Validation', route: 'validation' }
     ];
 
-    countryMenuItems: any[] = [
-        { text: 'United States', language: 'en', country: 'US', numberingSystem: 'latn' },
-        { text: 'United Kingdom', language: 'en', country: 'GB', numberingSystem: 'latn' },
-        { text: 'Italia', language: 'it', country: 'IT', numberingSystem: 'latn' },
-        { text: 'المملكة العربية السعودية', language: 'ar', country: 'SA', numberingSystem: 'arab' },
-        { text: 'المملكة العربية السعودية - Arabic', language: 'ar', country: 'SA', numberingSystem: 'latn' }
-    ];
+    countryMenuItems: any[];
 
     get currentCountry(): string {
         return this.locale.getCurrentCountry();
@@ -39,7 +33,9 @@ export class AppComponent implements OnInit {
 
     dir: Direction;
 
-    constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) { }
+    constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) {
+        this.countryMenuItems = this.locale.getConfiguration().localizedRoutingOptions.schema;
+    }
 
     ngOnInit(): void {
         this.translation.translationChanged().subscribe(
@@ -48,50 +44,11 @@ export class AppComponent implements OnInit {
                 this.dir = this.locale.getLanguageDirection() as Direction;
             }
         );
-
-        // Initialzes numbering system for localized routing.
-        switch (this.locale.getCurrentLocale()) {
-            case 'en-US':
-                this.locale.setCurrentNumberingSystem('latn');
-                break;
-            case 'en-GB':
-                this.locale.setCurrentNumberingSystem('latn');
-                break;
-            case 'it-IT':
-                this.locale.setCurrentNumberingSystem('latn');
-                break;
-            case 'ar-SA':
-                this.locale.setCurrentNumberingSystem('arab');
-                break;
-        }
-        // Initializes currency for localized routing.
-        this.updateCurrency();
-
-        // Changes currency when default locale changes.
-        this.locale.defaultLocaleChanged.subscribe(() => {
-            this.updateCurrency();
-        });
     }
 
-    updateCurrency(): void {
-        switch (this.locale.getCurrentLocale()) {
-            case 'en-US':
-                this.locale.setCurrentCurrency('USD');
-                break;
-            case 'en-GB':
-                this.locale.setCurrentCurrency('GBP');
-                break;
-            case 'it-IT':
-                this.locale.setCurrentCurrency('EUR');
-                break;
-            case 'ar-SA':
-                this.locale.setCurrentCurrency('SAR');
-                break;
-        }
-    }
-
-    selectLocale(language: string, country: string, numberingSystem: string): void {
+    selectLocale(language: string, country: string, numberingSystem: string, currency: string): void {
         this.locale.setDefaultLocale(language, country, '', numberingSystem);
+        this.locale.setCurrentCurrency(currency);
     }
 
 }

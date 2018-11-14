@@ -25,10 +25,10 @@
                         </button>
 
                         <mat-menu xPosition="before" #countryMenu="matMenu" class="before">
-                            <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.language, item.country, item.numberingSystem)"
+                            <a *ngFor="let item of countryMenuItems" (click)="selectLocale(item.languageCode, item.countryCode, item.numberingSystem, item.currency)"
                                 mat-menu-item>
                                 {{ item.text }}
-                                <mat-icon *ngIf="currentCountry == item.country && currentNumberingSystem == item.numberingSystem">done</mat-icon>
+                                <mat-icon *ngIf="currentCountry == item.countryCode && currentNumberingSystem == item.numberingSystem">done</mat-icon>
                             </a>
                         </mat-menu>
                     </div>
