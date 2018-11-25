@@ -44,6 +44,12 @@ export class AppComponent implements OnInit {
                 this.dir = this.locale.getLanguageDirection() as Direction;
             }
         );
+
+        this.translation.translationError.subscribe((error) => {
+            if (error) {
+                console.log(error);
+            }
+        });
     }
 
     selectLocale(language: string, country: string, numberingSystem: string, currency: string): void {

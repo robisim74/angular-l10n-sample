@@ -52,6 +52,12 @@ export class ListComponent implements OnInit, OnDestroy {
         this.subscription = this.translation.translationChanged().subscribe(
             () => { this.initializeFilters(); }
         );
+
+        this.translation.translationError.subscribe((error) => {
+            if (error) {
+                console.log(error);
+            }
+        });
     }
 
     ngOnDestroy(): void {

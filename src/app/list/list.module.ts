@@ -19,8 +19,8 @@ const l10nConfig: L10nConfig = {
             { type: ProviderType.Static, prefix: './assets/locale-list-' },
             { type: ProviderType.Static, prefix: './assets/locale-position-' }
         ],
-        composedKeySeparator: '.',
-        missingValue: 'No key'
+        rollbackOnError: true,
+        composedKeySeparator: '.'
     }
 };
 
