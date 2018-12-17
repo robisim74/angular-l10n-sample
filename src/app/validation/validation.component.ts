@@ -34,7 +34,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
     subscription: Subscription;
 
     constructor(
-        public locale: LocaleService,
+        private locale: LocaleService,
         private localeValidation: LocaleValidation,
         private dateAdapter: DateAdapter<NativeDateAdapter>
     ) { }

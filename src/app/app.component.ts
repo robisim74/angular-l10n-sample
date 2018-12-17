@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Direction } from '@angular/cdk/bidi';
 
-import { LocaleService, TranslationService } from 'angular-l10n';
+import { LocaleService, TranslationService, SearchService, L10N_CONFIG, L10nConfigRef } from 'angular-l10n';
 
 @Component({
     selector: 'app-root',
@@ -12,13 +11,13 @@ import { LocaleService, TranslationService } from 'angular-l10n';
  * AppComponent class doesn't use decorators
  * because the view uses only directives and not the pipes to get the translation.
  */
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
     navItems: any[] = [
-        { name: 'App.Home', route: 'home' },
-        { name: 'App.I18n', route: 'i18n' },
-        { name: 'App.List', route: 'list' },
-        { name: 'App.Validation', route: 'validation' }
+        { name: 'app.home', route: 'home' },
+        { name: 'app.i18n', route: 'i18n' },
+        { name: 'app.list', route: 'list' },
+        { name: 'app.validation', route: 'validation' }
     ];
 
     countryMenuItems: any[];
@@ -33,14 +32,20 @@ export class AppComponent implements OnInit {
 
     dir: Direction;
 
-    constructor(public locale: LocaleService, public translation: TranslationService, public title: Title) {
-        this.countryMenuItems = this.locale.getConfiguration().localizedRoutingOptions.schema;
+    constructor(
+        @Inject(L10N_CONFIG) private configuration: L10nConfigRef,
+        private locale: LocaleService,
+        private translation: TranslationService,
+        private search: SearchService
+    ) {
+        this.countryMenuItems = this.configuration.localizedRouting.schema;
     }
 
     ngOnInit(): void {
+        this.search.updateHead('app');
+
         this.translation.translationChanged().subscribe(
             () => {
-                this.title.setTitle(this.translation.translate('App.Title'));
                 this.dir = this.locale.getLanguageDirection() as Direction;
             }
         );
@@ -51,6 +56,8 @@ export class AppComponent implements OnInit {
             }
         });
     }
+
+    ngOnDestroy(): void { }
 
     selectLocale(language: string, country: string, numberingSystem: string, currency: string): void {
         this.locale.setDefaultLocale(language, country, '', numberingSystem);

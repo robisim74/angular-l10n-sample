@@ -1,6 +1,18 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {
+    L10nConfig,
+    L10nLoader,
+    LocalizationModule,
+    LocaleSeoModule,
+    LocaleValidationModule,
+    StorageStrategy,
+    ProviderType,
+    ISOCode,
+    LogLevel
+} from 'angular-l10n';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -9,18 +21,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { I18nComponent } from './i18n/i18n.component';
 import { ValidationComponent } from './validation/validation.component';
-
-import {
-    L10nConfig,
-    L10nLoader,
-    LocalizationModule,
-    LocaleValidationModule,
-    StorageStrategy,
-    ProviderType,
-    ISOCode
-} from 'angular-l10n';
+import { environment } from '../environments/environment';
 
 const l10nConfig: L10nConfig = {
+    logger: {
+        level: environment.production ? LogLevel.Off : LogLevel.Warn
+    },
     locale: {
         languages: [
             { code: 'en', dir: 'ltr' },
@@ -30,32 +36,32 @@ const l10nConfig: L10nConfig = {
         defaultLocale: { languageCode: 'en', countryCode: 'US', numberingSystem: 'latn' },
         currency: 'USD',
         storage: StorageStrategy.Cookie,
-        cookieExpiration: 30,
-        localizedRouting: [ISOCode.Language, ISOCode.Country],
-        localizedRoutingOptions: {
-            defaultRouting: false,
-            schema: [
-                { text: 'United States', languageCode: 'en', countryCode: 'US', numberingSystem: 'latn', currency: 'USD' },
-                { text: 'United Kingdom', languageCode: 'en', countryCode: 'GB', numberingSystem: 'latn', currency: 'GBP' },
-                { text: 'Italia', languageCode: 'it', countryCode: 'IT', numberingSystem: 'latn', currency: 'EUR' },
-                { text: 'المملكة العربية السعودية', languageCode: 'ar', countryCode: 'SA', numberingSystem: 'arab', currency: 'SAR' },
-                {
-                    text: 'المملكة العربية السعودية - Arabic',
-                    languageCode: 'ar', countryCode: 'SA', numberingSystem: 'latn', currency: 'SAR'
-                }
-            ]
-        }
+        cookieExpiration: 30
     },
     translation: {
         providers: [
             { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
-        version: '6.6.1',
+        version: '7.0.0',
         rollbackOnError: true,
         composedKeySeparator: '.',
         missingValue: 'No key',
         i18nPlural: true
+    },
+    localizedRouting: {
+        format: [ISOCode.Language, ISOCode.Country],
+        defaultRouting: false,
+        schema: [
+            { text: 'United States', languageCode: 'en', countryCode: 'US', numberingSystem: 'latn', currency: 'USD' },
+            { text: 'United Kingdom', languageCode: 'en', countryCode: 'GB', numberingSystem: 'latn', currency: 'GBP' },
+            { text: 'Italia', languageCode: 'it', countryCode: 'IT', numberingSystem: 'latn', currency: 'EUR' },
+            { text: 'المملكة العربية السعودية', languageCode: 'ar', countryCode: 'SA', numberingSystem: 'arab', currency: 'SAR' },
+            {
+                text: 'المملكة العربية السعودية - Arabic',
+                languageCode: 'ar', countryCode: 'SA', numberingSystem: 'latn', currency: 'SAR'
+            }
+        ]
     }
 };
 
@@ -72,6 +78,7 @@ export function initL10n(l10nLoader: L10nLoader): Function {
         AppRoutingModule,
         SharedModule,
         LocalizationModule.forRoot(l10nConfig),
+        LocaleSeoModule.forRoot(),
         LocaleValidationModule.forRoot()
     ],
     declarations: [
@@ -81,7 +88,6 @@ export function initL10n(l10nLoader: L10nLoader): Function {
         ValidationComponent
     ],
     providers: [
-        Title,
         {
             provide: APP_INITIALIZER,
             useFactory: initL10n,

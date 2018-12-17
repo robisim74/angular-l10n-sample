@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgLocalization } from '@angular/common';
 
 import { Language } from 'angular-l10n';
@@ -18,26 +18,26 @@ export class MessagesLocalization extends NgLocalization {
     styleUrls: ['./i18n.component.scss'],
     providers: [{ provide: NgLocalization, useClass: MessagesLocalization }]
 })
-export class I18nComponent implements OnInit {
+export class I18nComponent implements OnInit, OnDestroy {
 
     @Language() lang: string;
 
     message = "";
     gender = "";
     inviteMapping: any = {
-        male: 'I18n.Invite him',
-        female: 'I18n.Invite her'
+        male: 'i18n.inviteHim',
+        female: 'i18n.inviteHer'
     };
     messages: any = [];
     messageMapping: any = {
-        '=0': 'I18n.No messages',
-        '=1': 'I18n.One message',
-        'other': '# I18n.messages'
+        '=0': 'i18n.noMessages',
+        '=1': 'i18n.oneMessage',
+        'other': '# i18n.messages'
     };
 
-    ngOnInit(): void {
-        //
-    }
+    ngOnInit(): void { }
+
+    ngOnDestroy(): void { }
 
     addMessage(): void {
         this.messages.push(this.message);

@@ -43,7 +43,7 @@ export class ListComponent implements OnInit, OnDestroy {
     subscription: Subscription;
 
     // The injection of ChangeDetectorRef is necessary for OnPush change detection strategy.
-    constructor(public translation: TranslationService, private collator: Collator, private cdr: ChangeDetectorRef) { }
+    constructor(private translation: TranslationService, private collator: Collator, private cdr: ChangeDetectorRef) { }
 
     ngOnInit(): void {
         this.intlAPI = IntlAPI.hasCollator();

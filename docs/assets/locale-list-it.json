@@ -1,5 +1,5 @@
 {
-    "Order by position": "Ordine per impiego",
-    "Order by desc position": "Ordine descrescente per impiego",
-    "Search by position": "Ricerca per impiego"
+    "orderByPosition": "Ordine per impiego",
+    "orderByDescPosition": "Ordine descrescente per impiego",
+    "searchByPosition": "Ricerca per impiego"
 }
