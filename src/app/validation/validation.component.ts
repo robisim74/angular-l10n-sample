@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DateAdapter, NativeDateAdapter } from '@angular/material';
+import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 
 import {
