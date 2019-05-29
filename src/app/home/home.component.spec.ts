@@ -1,6 +1,7 @@
 import { HomeComponent } from './home.component';
 
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { Type } from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { SharedModule } from '../shared/shared.module';
 
 import {
@@ -36,7 +37,7 @@ describe('Component: HomeComponent', () => {
         }
     };
 
-    beforeEach(async(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
                 SharedModule,
@@ -47,17 +48,17 @@ describe('Component: HomeComponent', () => {
 
         fixture = TestBed.createComponent(HomeComponent);
         comp = fixture.componentInstance;
-    }));
+    });
 
     beforeEach((done: any) => {
-        l10nLoader = TestBed.get(L10nLoader);
+        l10nLoader = TestBed.get(L10nLoader as Type<L10nLoader>);
         l10nLoader.load().then(() => done());
     });
 
-    it('should render translated text', (() => {
+    it('should render translated text', () => {
         fixture.detectChanges();
 
         expect(fixture.debugElement.nativeElement.textContent).toContain('The Metamorphosis');
-    }));
+    });
 
 });

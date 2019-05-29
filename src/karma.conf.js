@@ -12,6 +12,9 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
+    files: [
+      { pattern: './assets/**', watched: true, included: false, nocache: true, served: true }
+    ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
@@ -19,6 +22,9 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, '../coverage'),
       reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
+    },
+    proxies: {
+      "/assets/": "/base/assets/"
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
