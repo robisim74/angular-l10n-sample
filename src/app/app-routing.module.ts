@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'i18n', component: I18nComponent },
     {
-        path: 'list', loadChildren: './list/list.module#ListModule'
+        path: 'list', loadChildren: () => import('./list/list.module').then(m => m.ListModule)
     },
     { path: 'validation', component: ValidationComponent },
     { path: '**', redirectTo: 'home' }
