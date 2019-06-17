@@ -59,9 +59,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void { }
 
-    selectLocale(language: string, country: string, numberingSystem: string, currency: string): void {
+    selectLocale(language: string, country: string, numberingSystem: string, currency: string, zoneName: string): void {
         this.locale.setDefaultLocale(language, country, '', numberingSystem);
         this.locale.setCurrentCurrency(currency);
+        this.locale.setCurrentTimezone(zoneName);
     }
 
 }

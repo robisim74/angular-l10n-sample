@@ -8,6 +8,7 @@ import {
     L10nConfig,
     L10nLoader,
     LocalizationModule,
+    LocalizationExtraModule,
     StorageStrategy,
     ProviderType
 } from 'angular-l10n';
@@ -41,7 +42,8 @@ describe('Component: HomeComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 SharedModule,
-                LocalizationModule.forRoot(l10nConfig)
+                LocalizationModule.forRoot(l10nConfig),
+                LocalizationExtraModule
             ],
             declarations: [HomeComponent]
         }).compileComponents();

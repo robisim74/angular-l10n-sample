@@ -6,6 +6,7 @@ import {
     L10nConfig,
     L10nLoader,
     LocalizationModule,
+    LocalizationExtraModule,
     LocaleSeoModule,
     LocaleValidationModule,
     StorageStrategy,
@@ -35,6 +36,7 @@ const l10nConfig: L10nConfig = {
         ],
         defaultLocale: { languageCode: 'en', countryCode: 'US', numberingSystem: 'latn' },
         currency: 'USD',
+        timezone: 'America/Los_Angeles',
         storage: StorageStrategy.Cookie,
         cookieExpiration: 30
     },
@@ -43,7 +45,7 @@ const l10nConfig: L10nConfig = {
             { type: ProviderType.Static, prefix: './assets/locale-' }
         ],
         caching: true,
-        version: '7.2.0',
+        version: '8.0.0',
         rollbackOnError: true,
         composedKeySeparator: '.',
         missingValue: 'No key',
@@ -53,13 +55,25 @@ const l10nConfig: L10nConfig = {
         format: [ISOCode.Language, ISOCode.Country],
         defaultRouting: false,
         schema: [
-            { text: 'United States', languageCode: 'en', countryCode: 'US', numberingSystem: 'latn', currency: 'USD' },
-            { text: 'United Kingdom', languageCode: 'en', countryCode: 'GB', numberingSystem: 'latn', currency: 'GBP' },
-            { text: 'Italia', languageCode: 'it', countryCode: 'IT', numberingSystem: 'latn', currency: 'EUR' },
-            { text: 'المملكة العربية السعودية', languageCode: 'ar', countryCode: 'SA', numberingSystem: 'arab', currency: 'SAR' },
+            {
+                text: 'United States',
+                languageCode: 'en', countryCode: 'US', numberingSystem: 'latn', currency: 'USD', timezone: 'America/Los_Angeles'
+            },
+            {
+                text: 'United Kingdom',
+                languageCode: 'en', countryCode: 'GB', numberingSystem: 'latn', currency: 'GBP', timezone: 'Europe/London'
+            },
+            {
+                text: 'Italia',
+                languageCode: 'it', countryCode: 'IT', numberingSystem: 'latn', currency: 'EUR', timezone: 'Europe/Rome'
+            },
+            {
+                text: 'المملكة العربية السعودية',
+                languageCode: 'ar', countryCode: 'SA', numberingSystem: 'arab', currency: 'SAR', timezone: 'Asia/Riyadh'
+            },
             {
                 text: 'المملكة العربية السعودية - Arabic',
-                languageCode: 'ar', countryCode: 'SA', numberingSystem: 'latn', currency: 'SAR'
+                languageCode: 'ar', countryCode: 'SA', numberingSystem: 'latn', currency: 'SAR', timezone: 'Asia/Riyadh'
             }
         ]
     }
@@ -78,6 +92,7 @@ export function initL10n(l10nLoader: L10nLoader): Function {
         AppRoutingModule,
         SharedModule,
         LocalizationModule.forRoot(l10nConfig),
+        LocalizationExtraModule,
         LocaleSeoModule.forRoot(),
         LocaleValidationModule.forRoot()
     ],

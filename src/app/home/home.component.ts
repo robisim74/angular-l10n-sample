@@ -20,14 +20,24 @@ export class HomeComponent implements OnInit {
     a: number;
     b: number;
 
+    timeAgo: number;
+
     ngOnInit(): void {
         this.today = Date.now();
         this.pi = 3.14159;
         this.a = Math.round(Math.random() * 100) / 100;
         this.b = Math.round(Math.random() * 1000000) / 100;
         this.intlAPI = IntlAPI.hasDateTimeFormat()
+            && IntlAPI.hasTimezone()
             && IntlAPI.hasNumberFormat()
-            && IntlAPI.hasCollator();
+            && IntlAPI.hasCollator()
+            && IntlAPI.hasRelativeTimeFormat();
+
+        let i = 0;
+        setInterval(() => {
+            i++;
+            this.timeAgo = i * (-1);
+        }, 1000);
     }
 
 }

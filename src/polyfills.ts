@@ -18,6 +18,14 @@
 * BROWSER POLYFILLS
 */
 
+/**
+ * Intl RelativeTimeFormat
+ */
+import 'intl-pluralrules';
+import '@formatjs/intl-relativetimeformat/polyfill';
+import '@formatjs/intl-relativetimeformat/dist/locale-data/en';
+import '@formatjs/intl-relativetimeformat/dist/locale-data/it';
+import '@formatjs/intl-relativetimeformat/dist/locale-data/ar';
 
 /**
  * If the application will be indexed by Google Search, the following is required.
@@ -44,14 +52,14 @@ import 'web-animations-js';  // Run `npm install --save web-animations-js`.
  * user can disable parts of macroTask/DomEvents patch by setting following flags
  */
 
- // (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
- // (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
- // (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
+// (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
+// (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
+// (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
 
- /*
- * in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
- * with the following flag, it will bypass `zone.js` patch for IE/Edge
- */
+/*
+* in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
+* with the following flag, it will bypass `zone.js` patch for IE/Edge
+*/
 // (window as any).__Zone_enable_cross_context_check = true;
 
 /***************************************************************************************************
@@ -65,7 +73,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  */
 
 
- /***************************************************************************************************
- * ANGULAR MATERIAL IMPORTS
- */
+/***************************************************************************************************
+* ANGULAR MATERIAL IMPORTS
+*/
 import 'hammerjs';

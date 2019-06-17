@@ -18,7 +18,8 @@
     <mat-card>
         <mat-card-title l10nTranslate>home.dates</mat-card-title>
         <mat-card-content>
-            <p format="fullDate" l10nDate>{{ today }}</p>
+            <p format="full" l10nDate>{{ today }}</p>
+            <p [format]="{numeric:'always',style:'long'}" unit="second" l10nTimeAgo>{{ timeAgo }}</p>
         </mat-card-content>
     </mat-card>
 

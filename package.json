@@ -1,12 +1,12 @@
 {
   "name": "angular-l10n-sample",
-  "version": "7.2.0",
+  "version": "8.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot --open",
     "build": "ng build --prod",
     "build:gh-pages": "ng build --prod --output-path docs --base-href https://robisim74.github.io/angular-l10n-sample/",
-    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/angular-l10n-sample/stats.json",
+    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/angular-l10n-sample/stats-es2015.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,9 +23,11 @@
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
     "@angular/router": "8.0.0",
-    "angular-l10n": "7.2.0",
+    "@formatjs/intl-relativetimeformat": "^1.0.1",
+    "angular-l10n": "8.0.0",
     "core-js": "3.1.3",
     "hammerjs": "2.0.8",
+    "intl-pluralrules": "^1.0.2",
     "rxjs": "6.5.2",
     "tslib": "^1.9.0",
     "web-animations-js": "github:angular/web-animations-js#release_pr208",

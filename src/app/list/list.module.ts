@@ -8,7 +8,7 @@ import {
     L10nConfig,
     L10nLoader,
     LocalizationModule,
-    CollatorModule,
+    LocalizationExtraModule,
     ProviderType
 } from 'angular-l10n';
 
@@ -20,7 +20,7 @@ const l10nConfig: L10nConfig = {
             { type: ProviderType.Static, prefix: './assets/locale-position-' }
         ],
         caching: true,
-        version: '7.0.0',
+        version: '8.0.0',
         rollbackOnError: true,
         composedKeySeparator: '.',
         missingValue: 'No key'
@@ -32,7 +32,7 @@ const l10nConfig: L10nConfig = {
         ListRoutingModule,
         SharedModule,
         LocalizationModule.forChild(l10nConfig), // New instance of TranslationService.
-        CollatorModule // New instance of Collator.
+        LocalizationExtraModule // New instance of Collator.
     ],
     declarations: [ListComponent]
 })
